@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.106
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZwkProject", "ZwkProject\ZwkProject.csproj", "{8CD94221-713C-4A96-99DB-859778A81072}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "模块", "模块", "{3E56098F-0EEB-4428-BB48-D99C8FFEF7BE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "数据库", "数据库", "{FD36877D-DB4C-4E7B-B872-82CBF1E2EEBF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserModule", "UserModule\UserModule.csproj", "{577B5D50-4FD2-4055-9A89-0EC3C797678B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectModule", "ProjectModule\ProjectModule.csproj", "{69424E7A-F540-4414-8735-07F17951C288}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogModule", "LogModule\LogModule.csproj", "{B96AD7A8-A3E0-4ED5-B17F-87567B994F2C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectDatabase", "ProjectDatabase\ProjectDatabase.csproj", "{FC456CA2-3F46-4493-808E-1C3375EA967B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8CD94221-713C-4A96-99DB-859778A81072}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CD94221-713C-4A96-99DB-859778A81072}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CD94221-713C-4A96-99DB-859778A81072}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CD94221-713C-4A96-99DB-859778A81072}.Release|Any CPU.Build.0 = Release|Any CPU
+		{577B5D50-4FD2-4055-9A89-0EC3C797678B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{577B5D50-4FD2-4055-9A89-0EC3C797678B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{577B5D50-4FD2-4055-9A89-0EC3C797678B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{577B5D50-4FD2-4055-9A89-0EC3C797678B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69424E7A-F540-4414-8735-07F17951C288}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69424E7A-F540-4414-8735-07F17951C288}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69424E7A-F540-4414-8735-07F17951C288}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69424E7A-F540-4414-8735-07F17951C288}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B96AD7A8-A3E0-4ED5-B17F-87567B994F2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B96AD7A8-A3E0-4ED5-B17F-87567B994F2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B96AD7A8-A3E0-4ED5-B17F-87567B994F2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B96AD7A8-A3E0-4ED5-B17F-87567B994F2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC456CA2-3F46-4493-808E-1C3375EA967B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC456CA2-3F46-4493-808E-1C3375EA967B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC456CA2-3F46-4493-808E-1C3375EA967B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC456CA2-3F46-4493-808E-1C3375EA967B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{577B5D50-4FD2-4055-9A89-0EC3C797678B} = {3E56098F-0EEB-4428-BB48-D99C8FFEF7BE}
+		{69424E7A-F540-4414-8735-07F17951C288} = {3E56098F-0EEB-4428-BB48-D99C8FFEF7BE}
+		{B96AD7A8-A3E0-4ED5-B17F-87567B994F2C} = {3E56098F-0EEB-4428-BB48-D99C8FFEF7BE}
+		{FC456CA2-3F46-4493-808E-1C3375EA967B} = {FD36877D-DB4C-4E7B-B872-82CBF1E2EEBF}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {336D872F-EA64-4B8A-BEE8-505983666A83}
+	EndGlobalSection
+EndGlobal
