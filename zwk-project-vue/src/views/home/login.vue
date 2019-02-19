@@ -1,6 +1,6 @@
 <template>
     <Row class="w-25 m-lr-auto" style="margin-top:100px;">
-        <h2 class="mb-4 text-center">项目管理系统</h2>
+        <h2 class="mb-4 text-center">ZWK项目管理系统</h2>
         <Form class="p-4 bg-white border rounded" :model="form" label-position="top">
             <FormItem label="用户名">
                 <Input type="text" v-model="form.username" placeholder="Username"></Input>
