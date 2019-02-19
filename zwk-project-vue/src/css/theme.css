@@ -6,19 +6,35 @@ body{
 }
 
 /*标题 加粗 黑色*/
-.title{
+.text-important{
     font-weight: bold;
     color:rgba(0,0,0,0.85)
 }
 
 /*正文*/
-.text{
+.text-normal{
     color:rgba(0,0,0,0.85)
 }
 
 /*提示信息*/
-.message{
+.text-light{
     color: rgba(0,0,0,0.6);
+}
+
+.text-info{
+    color:#577abc;
+}
+
+.text-success{
+    color:#00c853;
+}
+
+.text-warning{
+    color:#ffa726;
+}
+
+.text-danger{
+    color:#ef5350;
 }
 
 /*功能色*/
@@ -45,22 +61,6 @@ body{
 .link{
     color:#577abc;
     font-weight: bold;
-}
-
-.text-info{
-    color:#577abc;
-}
-
-.text-success{
-    color:#00c853;
-}
-
-.text-warning{
-    color:#ffa726;
-}
-
-.text-danger{
-    color:#ef5350;
 }
 
 /*以下颜色仅为定义，实际效果在extend.css覆盖elementUI*/
