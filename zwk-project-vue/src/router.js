@@ -17,6 +17,22 @@ export default new Router({
           name: "首页",
           component: () => import('@/views/home/index')
         },
+        //用户
+        {
+          path: "user",
+          name: "用户管理",
+          component: () => import('@/views/user/router.vue'),
+          children: [{
+            path: "list",
+            name: "用户列表",
+            component: () => import('@/views/user/user/list.vue'),
+            children: [{
+              path: "add",
+              name: "添加用户",
+              component: () => import('@/views/user/user/add.vue')
+            }]
+          }]
+        }
       ]
     },
     {
