@@ -1,23 +1,23 @@
 import axios from '@/utils/http.js'
 
-const user = {
+const project = {
     get: function (params) {
-        axios.get("/user/get", {
+        axios.get("/project/get", {
             params: params
         })
     },
     getPage: function (params) {
-        axios.get("/user/getPage", {
+        axios.get("/project/getPage", {
             params: params
         })
     },
-    getPageUrl: "/user/getPage",
+    getPageUrl: "/project/getPage",
     add: function (form) {
-        axios.post("/user/add", form)
+        axios.post("/project/add", form)
     },
     update: function (form) {
-        axios.post("/user/update", form)
+        axios.post("/project/update", form)
     }
 }
 
-export default user
+export default project
