@@ -1,5 +1,5 @@
 <template>
-    <Row class="pl-3 pr-3" type="flex" justify="space-between" align="middle">
+    <Row class="pl-3 pr-3 border-bottom" type="flex" justify="space-between" align="middle">
         <Breadcrumb>
             <BreadcrumbItem v-for="item in breadcrumb" :key="item.path">
                 <strong>{{ item.name }}</strong>

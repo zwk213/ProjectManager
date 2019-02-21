@@ -29,7 +29,7 @@ export default {
         return {
             table: {
                 columns: [{ title: "用户名", key: "userName" }],
-                apiUrl: "/user/getPage",
+                apiUrl: this.$api.user.url.getPage,
                 search: {
                     name: ""
                 }

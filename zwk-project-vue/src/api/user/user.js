@@ -1,22 +1,27 @@
 import axios from '@/utils/http.js'
 
 const user = {
+    url:{
+        get:"/user/get",
+        getPage:"/user/getPage",
+        add:"/user/add",
+        update:"/user/update"
+    },
     get: function (params) {
-        axios.get("/user/get", {
+        return axios.get(user.url.get, {
             params: params
         })
     },
     getPage: function (params) {
-        axios.get("/user/getPage", {
+        return axios.get(user.url.getPage, {
             params: params
         })
     },
-    getPageUrl: "/user/getPage",
     add: function (form) {
-        axios.post("/user/add", form)
+        return axios.post(user.url.add, form)
     },
     update: function (form) {
-        axios.post("/user/update", form)
+        return axios.post(user.url.update, form)
     }
 }
 

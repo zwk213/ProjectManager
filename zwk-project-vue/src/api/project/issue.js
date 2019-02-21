@@ -1,22 +1,27 @@
 import axios from '@/utils/http.js'
 
 const issue = {
+    url:{
+        get: "/project/issue/get",
+        getPage: "/project/issue/getPage",
+        add: "/project/issue/add",
+        update: "/project/issue/update",
+    },
     get: function (params) {
-        axios.get("/project/issue/get", {
+        return axios.get(issue.url.get, {
             params: params
         })
     },
     getPage: function (params) {
-        axios.get("/project/issue/getPage", {
+        return axios.get(issue.url.getPage,  {
             params: params
         })
     },
-    getPageUrl: "/project/issue/getPage",
     add: function (form) {
-        axios.post("/project/issue/add", form)
+        return axios.post(issue.url.add,  form)
     },
     update: function (form) {
-        axios.post("/project/issue/update", form)
+        return axios.post(issue.url.update,  form)
     }
 }
 

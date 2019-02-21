@@ -9,6 +9,9 @@ const api = {
         return axios.get(url, {
             params: params
         })
+    },
+    post: function (url, form) {
+        return axios.post(url, form);
     }
 }
 
