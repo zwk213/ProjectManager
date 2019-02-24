@@ -1,20 +1,20 @@
 <template>
     <div>
         <Menu theme="dark" :active-name="active" width="100%">
-            <MenuItem name="/">工作台</MenuItem>
+            <MenuItem name="/" to="/">工作台</MenuItem>
             <Submenu name="2">
                 <template slot="title">
                     <Icon type="ios-paper"/>用户管理
                 </template>
-                <MenuItem name="2-1">个人信息</MenuItem>
-                <MenuItem name="2-2">用户列表</MenuItem>
+                <MenuItem name="2-1" to="/user/me">个人信息</MenuItem>
+                <MenuItem name="2-2" to="/user/list">用户列表</MenuItem>
             </Submenu>
             <Submenu name="3">
                 <template slot="title">
                     <Icon type="ios-paper"/>项目管理
                 </template>
-                <MenuItem name="3-1">最近项目</MenuItem>
-                <MenuItem name="3-2">项目列表</MenuItem>
+                <MenuItem name="3-1" to="/">最近项目</MenuItem>
+                <MenuItem name="3-2" to="/">项目列表</MenuItem>
             </Submenu>
         </Menu>
     </div>

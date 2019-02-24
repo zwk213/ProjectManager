@@ -30,7 +30,20 @@ export default new Router({
               path: "add",
               name: "添加用户",
               component: () => import('@/views/user/user/add.vue')
+            },{
+              path: "edit",
+              name: "编辑用户",
+              component: () => import('@/views/user/user/edit.vue')
             }]
+          }, {
+            path:"detail",
+            name:"详细信息",
+            component:()=>import('@/views/user/user/detail.vue')
+          },
+          {
+            path:"me",
+            name:"个人信息",
+            component:()=>import('@/views/user/user/me.vue')
           }]
         }
       ]
