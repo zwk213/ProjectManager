@@ -23,27 +23,55 @@ export default new Router({
           name: "用户管理",
           component: () => import('@/views/user/router.vue'),
           children: [{
+            path: "list",
+            name: "用户列表",
+            component: () => import('@/views/user/user/list.vue'),
+            children: [{
+              path: "add",
+              name: "添加用户",
+              component: () => import('@/views/user/user/add.vue')
+            }, {
+              path: "edit",
+              name: "编辑用户",
+              component: () => import('@/views/user/user/edit.vue')
+            }]
+          }, {
+            path: "detail",
+            name: "详细信息",
+            component: () => import('@/views/user/user/detail.vue')
+          }]
+        },
+        {
+          path: "project",
+          name: "项目管理",
+          component: () => import('@/views/project/router.vue'),
+          children: [{
+              path: "",
+              name: "我的项目",
+              component: () => import('@/views/project/project/mine.vue')
+            },
+            {
               path: "list",
-              name: "用户列表",
-              component: () => import('@/views/user/user/list.vue'),
+              name: "项目列表",
+              component: () => import('@/views/project/project/list.vue'),
               children: [{
                 path: "add",
-                name: "添加用户",
-                component: () => import('@/views/user/user/add.vue')
+                name: "添加项目",
+                component: () => import('@/views/project/project/add.vue')
               }, {
                 path: "edit",
-                name: "编辑用户",
-                component: () => import('@/views/user/user/edit.vue')
+                name: "编辑项目",
+                component: () => import('@/views/project/project/edit.vue')
               }]
             }, {
               path: "detail",
-              name: "详细信息",
-              component: () => import('@/views/user/user/detail.vue')
-            },
-            {
-              path: "me",
-              name: "个人信息",
-              component: () => import('@/views/user/user/me.vue')
+              name: "项目详情",
+              component: () => import('@/views/project/project/detail.vue'),
+              children: [{
+                path: "",
+                name: "基本信息",
+                component: () => import('@/views/project/project/main.vue')
+              }]
             }
           ]
         }
