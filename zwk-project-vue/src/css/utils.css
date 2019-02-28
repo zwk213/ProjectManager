@@ -1,0 +1,21 @@
+.zwk-tab {
+    display: inline-block;
+}
+
+.zwk-tab a {
+    display: inline-block;
+    padding: 10px 15px;
+    color: rgba(0, 0, 0, 0.85)
+}
+
+.zwk-tab a:hover {
+    font-weight: bold;
+}
+
+.zwk-tab a.active,
+.zwk-tab a.active:hover {
+    font-weight: bold;
+    color: #2d8cf0;
+    border-bottom: 2px solid #2d8cf0;
+    padding-bottom: 8px;
+}

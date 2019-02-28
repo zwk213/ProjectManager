@@ -1,7 +1,5 @@
 <template>
-    <Row>
-        <DataForm :model="model" :submitUrl="submitUrl"></DataForm>
-    </Row>
+    <DataForm :model="model" :submitUrl="submitUrl"></DataForm>
 </template>
 
 <script>
@@ -14,10 +12,21 @@ export default {
         return {
             submitUrl: this.$api.user.url.update,
             model: [
-                { type: "input", field: "userName", label: "用户名" },
-                { type: "input", field: "password", label: "密码" },
-                { type: "input", field: "phone", label: "手机号" },
-                { type: "input", field: "email", label: "邮箱" }
+                {
+                    type: "static",
+                    field: "primaryKey",
+                    label: "编码",
+                    value: ""
+                },
+                {
+                    type: "input",
+                    field: "userName",
+                    label: "用户名",
+                    value: ""
+                },
+                { type: "input", field: "password", label: "密码", value: "" },
+                { type: "input", field: "phone", label: "手机号", value: "" },
+                { type: "input", field: "email", label: "邮箱", value: "" }
             ]
         };
     },

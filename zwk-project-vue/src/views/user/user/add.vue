@@ -1,7 +1,5 @@
 <template>
-    <Row>
-        <DataForm :model="model" :submitUrl="submitUrl"></DataForm>
-    </Row>
+    <DataForm :model="model" :submitUrl="submitUrl"></DataForm>
 </template>
 
 <script>

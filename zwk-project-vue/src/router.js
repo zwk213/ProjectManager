@@ -71,6 +71,10 @@ export default new Router({
                 path: "",
                 name: "基本信息",
                 component: () => import('@/views/project/project/main.vue')
+              }, {
+                path: "schedule",
+                name: "时间线",
+                component: () => ('@/views/project/schedule.vue')
               }]
             }
           ]

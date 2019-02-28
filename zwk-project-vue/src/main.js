@@ -13,6 +13,7 @@ Vue.config.productionTip = false;
 //导入样式
 import '@/css/basic.css'
 import '@/css/extend.css'
+import '@/css/utils.css'
 import '@/css/theme.css'
 
 //初始化执行权限判定

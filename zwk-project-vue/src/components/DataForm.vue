@@ -1,12 +1,16 @@
 <template>
-    <Form ref="data-form" label-position="right" :label-width="100">
+    <Form ref="data-form" :model="dataForm" label-position="right" :label-width="100">
         <FormItem
-            v-for="item in formItems"
-            :key="item.field"
+            v-for="(item, index) in dataForm.items"
+            :key="index"
             :label="item.label"
+            :prop="'items.' + index + '.value'"
             :rules="item.rules"
-            :prop="item.field"
         >
+            <!--固定值-->
+            <template v-if="item.type=='static'">
+                <Input v-model="item.value" disabled/>
+            </template>
             <!--输入框-->
             <template v-if="item.type=='input'">
                 <Input type="text" v-model="item.value"></Input>
@@ -34,14 +38,13 @@
 
 <script>
 // var model = {
-//     type: "类型", //input select datepicker
+//     type: "类型", //input select datepicker static【固定值，不编辑】
 //     label: "输入内容释义",
 //     field: "字段名",
 //     value: "数据值",
 //     options: "select类型的枚举值",
 //     rules: [] //验证相关
 // };
-
 export default {
     name: "DataForm",
     props: {
@@ -52,22 +55,18 @@ export default {
             type: String
         }
     },
-    data() {
+    data: function() {
         return {
-            formItems: this.model
+            dataForm: {
+                items: this.model
+            }
         };
-    },
-    watch: {
-        model: {
-            handler() {},
-            deep: true
-        }
     },
     methods: {
         submit: function() {
             var form = {};
-            for (let i = 0; i < this.model.length; i++) {
-                var temp = this.model[i];
+            for (let i = 0; i < this.dataForm.items.length; i++) {
+                var temp = this.dataForm.items[i];
                 form[temp.field] = temp.value;
             }
             this.$refs["data-form"].validate(valid => {

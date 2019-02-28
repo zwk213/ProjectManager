@@ -79,7 +79,11 @@ export default {
     methods: {
         //表格
         load: function() {
-            this.$api.get(this.apiUrl, this.params).then(rsp => {
+            debugger;
+            //合并搜索条件
+            var temp = Object.assign({}, this.search, this.params);
+            this.$api.get(this.apiUrl, temp).then(rsp => {
+                debugger;
                 this.table.data = rsp.data.data;
                 this.pagination.total = rsp.data.count;
             });
