@@ -1,10 +1,7 @@
 <template>
-    <Row>11111111111</Row>
+    <div>link</div>
 </template>
 
 <script>
 export default {};
 </script>
-
-<style>
-</style>

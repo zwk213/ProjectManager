@@ -22,6 +22,7 @@ export default new Router({
           path: "user",
           name: "用户管理",
           component: () => import('@/views/user/router.vue'),
+          redirect: "/user/list",
           children: [{
             path: "list",
             name: "用户列表",
@@ -45,8 +46,9 @@ export default new Router({
           path: "project",
           name: "项目管理",
           component: () => import('@/views/project/router.vue'),
+          redirect: "/project/list",
           children: [{
-              path: "",
+              path: "mine",
               name: "我的项目",
               component: () => import('@/views/project/project/mine.vue')
             },
@@ -63,18 +65,35 @@ export default new Router({
                 name: "编辑项目",
                 component: () => import('@/views/project/project/edit.vue')
               }]
-            }, {
+            },
+            {
               path: "detail",
               name: "项目详情",
               component: () => import('@/views/project/project/detail.vue'),
               children: [{
-                path: "",
+                path: "index",
                 name: "基本信息",
                 component: () => import('@/views/project/project/main.vue')
               }, {
                 path: "schedule",
                 name: "时间线",
-                component: () => ('@/views/project/schedule.vue')
+                component: () => import('@/views/project/schedule/list.vue')
+              }, {
+                path: "issue",
+                name: "问题",
+                component: () => import('@/views/project/issue/list.vue')
+              }, {
+                path: "user",
+                name: "参与人员",
+                component: () => import('@/views/project/user/list.vue')
+              }, {
+                path: "link",
+                name: "地址",
+                component: () => import('@/views/project/link/list.vue')
+              }, {
+                path: "file",
+                name: "文件",
+                component: () => import('@/views/project/file/index.vue')
               }]
             }
           ]
