@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using CoreHelper.Json;
+﻿using System.Threading.Tasks;
+using CoreHelper;
 using EFHelper.Model;
 using JwtService;
 using LogModule.Bll;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjectModule.Bll;
 using ProjectModule.Model;

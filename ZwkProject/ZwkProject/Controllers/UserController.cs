@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CoreHelper.Json;
+using CoreHelper;
 using EFHelper.Model;
 using JwtService;
 using LogModule.Bll;

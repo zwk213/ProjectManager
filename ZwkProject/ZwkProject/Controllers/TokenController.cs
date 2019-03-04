@@ -5,7 +5,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using CoreHelper.Json;
+using CoreHelper;
 using JwtService;
 using LogModule.Bll;
 using LogModule.Model;

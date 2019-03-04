@@ -93,19 +93,19 @@ pre{
 
 /*弹性布局*/
 .flex-row {
+    display: flex;
     -webkit-box-orient: horizontal !important;
     -webkit-box-direction: normal !important;
     -ms-flex-direction: row !important;
     flex-direction: row !important;
-    display: flex;
 }
 
 .flex-column {
+    display: flex;
     -webkit-box-orient: vertical !important;
     -webkit-box-direction: normal !important;
     -ms-flex-direction: column !important;
     flex-direction: column !important;
-    display: flex;
 }
 
 .flex-grow {

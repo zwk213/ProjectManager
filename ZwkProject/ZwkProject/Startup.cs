@@ -109,12 +109,15 @@ namespace ZwkProject
                 //https传输
                 app.UseHsts();
             }
+
+            app.UseMiddleware<Mid>();
+
             //跨域
             app.UseCors("AllowAllOrigin");
             //配置Jwt授权
             app.UseAuthentication();
             //https重定向
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             //mvc模式
             app.UseMvc();
         }
