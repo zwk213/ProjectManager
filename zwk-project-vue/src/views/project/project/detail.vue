@@ -26,13 +26,13 @@
             </Row>
             <!--tab-->
             <div class="zwk-tab pl-3">
-                <Button
+                <router-link
                     class="tab-btn"
                     v-for="item in tabs"
                     :key="item.name"
-                    v-bind:class="{ active: item.active }"
-                    v-on:click="openTab(item.link)"
-                >{{item.name}}</Button>
+                    :to="item.link"
+                    replace
+                >{{item.name}}</router-link>
             </div>
         </div>
 
@@ -49,34 +49,29 @@ export default {
         return {
             tabs: [
                 {
-                    active: false,
                     name: "基础信息",
                     link: "/project/detail/index"
                 },
                 {
-                    active: false,
                     name: "时间线",
                     link: "/project/detail/schedule"
                 },
-                { active: false, name: "问题", link: "/project/detail/issue" },
+                { name: "问题", link: "/project/detail/issue" },
                 {
-                    active: false,
                     name: "参与人员",
                     link: "/project/detail/user"
                 },
                 {
-                    active: false,
                     name: "链接/地址",
                     link: "/project/detail/link"
                 },
-                { active: false, name: "文档", link: "/project/detail/file" }
+                { name: "文档", link: "/project/detail/file" }
             ],
             project: {}
         };
     },
-    mounted: function() {
+    created: function() {
         this.getProject();
-        this.initTab();
     },
     methods: {
         getProject: function() {
@@ -84,23 +79,6 @@ export default {
             this.$api.project.get(search).then(rsp => {
                 this.project = rsp.data;
             });
-        },
-        initTab: function(path) {
-            path = path ? path : this.$route.path;
-            for (let i = 0; i < this.tabs.length; i++) {
-                if (this.tabs[i].link === path) {
-                    this.tabs[i].active = true;
-                } else {
-                    this.tabs[i].active = false;
-                }
-            }
-        },
-        openTab: function(link) {
-            var path = {
-                path: link,
-                query: this.$route.query
-            };
-            this.$router.replace(path);
         }
     }
 };

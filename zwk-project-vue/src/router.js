@@ -71,7 +71,7 @@ export default new Router({
               name: "项目详情",
               component: () => import('@/views/project/project/detail.vue'),
               children: [{
-                path: "index",
+                path: "",
                 name: "基本信息",
                 component: () => import('@/views/project/project/main.vue')
               }, {
