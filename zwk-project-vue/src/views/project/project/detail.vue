@@ -1,7 +1,13 @@
 <template>
     <Row style="margin:-1rem">
         <!--顶部显示内容-->
-        <div class="bg-white mb-3">
+        <div class="bg-white mb-3 relative">
+            <!--操作-->
+            <div class="absolute" style="top:1rem;right:1rem" >
+                <ButtonGroup class="absolute" style="top:0;right:0">
+                    <Button>编辑</Button>
+                </ButtonGroup>
+            </div>
             <!--信息-->
             <Row type="flex" class="p-3 pb-0 mb-3">
                 <div class="bg-light mr-3" style="width:80px;height:80px;"></div>

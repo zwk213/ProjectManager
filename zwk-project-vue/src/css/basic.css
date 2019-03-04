@@ -91,6 +91,10 @@ pre{
     position: relative;
 }
 
+.absolute{
+    position: absolute;
+}
+
 /*弹性布局*/
 .flex-row {
     display: flex;

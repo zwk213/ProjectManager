@@ -10,7 +10,7 @@
     border-radius: 0;
 }
 
-.zwk-tab .tab-btn.router-link-active:hover {
+.zwk-tab .tab-btn:hover {
     font-weight: bold;
 }
 
