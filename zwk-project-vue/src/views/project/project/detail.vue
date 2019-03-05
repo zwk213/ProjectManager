@@ -3,8 +3,8 @@
         <!--顶部显示内容-->
         <div class="bg-white mb-3 relative">
             <!--操作-->
-            <div class="absolute" style="top:1rem;right:1rem" >
-                <ButtonGroup class="absolute" style="top:0;right:0">
+            <div class="absolute" style="top:1rem;right:1rem">
+                <ButtonGroup>
                     <Button>编辑</Button>
                 </ButtonGroup>
             </div>
@@ -55,23 +55,47 @@ export default {
         return {
             tabs: [
                 {
-                    name: "基础信息",
-                    link: "/project/detail/index"
+                    name: "简介",
+                    link: {
+                        path: "/project/detail/index",
+                        query: this.$route.query
+                    }
                 },
                 {
                     name: "时间线",
-                    link: "/project/detail/schedule"
+                    link: {
+                        path: "/project/detail/schedule",
+                        query: this.$route.query
+                    }
                 },
-                { name: "问题", link: "/project/detail/issue" },
+                {
+                    name: "问题",
+                    link: {
+                        path: "/project/detail/issue",
+                        query: this.$route.query
+                    }
+                },
                 {
                     name: "参与人员",
-                    link: "/project/detail/user"
+                    link: {
+                        path: "/project/detail/user",
+                        query: this.$route.query
+                    }
                 },
                 {
                     name: "链接/地址",
-                    link: "/project/detail/link"
+                    link: {
+                        path: "/project/detail/link",
+                        query: this.$route.query
+                    }
                 },
-                { name: "文档", link: "/project/detail/file" }
+                {
+                    name: "文档",
+                    link: {
+                        path: "/project/detail/file",
+                        query: this.$route.query
+                    }
+                }
             ],
             project: {}
         };

@@ -17,3 +17,7 @@
 .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title-active:not(.ivu-menu-submenu) {
     color: #ffa726;
 }
+
+.ivu-select-single .ivu-select-selection .ivu-select-placeholder {
+    color: #999;
+}

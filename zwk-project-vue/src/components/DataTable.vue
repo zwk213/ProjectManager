@@ -33,6 +33,8 @@
 </template>
 
 <script>
+import helper from "@/utils/helper.js";
+
 export default {
     name: "NormalTable",
     props: {
@@ -70,8 +72,11 @@ export default {
         };
     },
     mounted: function() {
+        //原生offsetTop指与父元素的间距，非元素与顶部间距
         this.table.height =
-            window.innerHeight - this.$refs.table.$el.offsetTop - 150;
+            window.innerHeight -
+            helper.node.offset(this.$refs.table.$el).top -
+            40;
     },
     created: function() {
         this.load();

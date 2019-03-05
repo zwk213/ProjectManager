@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using CoreHelper;
+using CoreHelper.Json;
 using EFHelper.Model;
 using JwtService;
 using LogModule.Bll;

@@ -7,6 +7,10 @@ import file from '@/api/project/file.js'
 
 const project = {
     issue,
+    schedule,
+    link,
+    user,
+    file,
     url: {
         get: "/project/get",
         getPage: "/project/getPage",
