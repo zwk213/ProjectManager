@@ -24,7 +24,7 @@ import api from '@/api/index.js'
 Vue.prototype.$api = api;
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+    router,
+    store,
+    render: h => h(App)
 }).$mount('#app')
