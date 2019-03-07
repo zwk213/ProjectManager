@@ -1,39 +1,45 @@
 <template>
     <div>
-        <Menu theme="dark" :active-name="active" width="100%" accordion>
+        <Menu theme="dark" :active-name="active" :open-names="openNames" width="100%" accordion>
             <MenuItem name="/" to="/">工作台</MenuItem>
-            <Submenu name="2">
+            <Submenu name="/user">
                 <template slot="title">
                     <Icon type="ios-paper"/>用户管理
                 </template>
-                <MenuItem name="2-2" to="/user/list">用户列表</MenuItem>
+                <MenuItem name="/user/list" to="/user/list">用户列表</MenuItem>
             </Submenu>
-            <Submenu name="3">
+            <Submenu name="/project">
                 <template slot="title">
                     <Icon type="ios-paper"/>项目管理
                 </template>
-                <MenuItem name="3-1" to="/project/my">我的项目</MenuItem>
-                <MenuItem name="3-2" to="/project/list">项目列表</MenuItem>
+                <!-- <MenuItem name="/project/mine" to="/project/mine">我的项目</MenuItem> -->
+                <MenuItem name="/project/list" to="/project/list">项目列表</MenuItem>
             </Submenu>
         </Menu>
     </div>
 </template>
 <script>
 export default {
-  name: "layoutSidebar",
-  data: function() {
-    return {
-      active: "/"
-    };
-  },
-  created: function() {
-    this.init();
-  },
-  methods: {
-    init: function() {
-      var currentPath = this.$router.history.current.path;
-      this.active = currentPath;
+    name: "layoutSidebar",
+    data: function() {
+        return {
+            active: "/",
+            openNames: []
+        };
+    },
+    created: function() {
+        this.init();
+    },
+    methods: {
+        init: function() {
+            var currentPath = this.$route.path;
+            var openName = currentPath.substr(
+                0,
+                currentPath.split("/")[1].length + 1
+            );
+            this.openNames = [openName];
+            this.active = currentPath;
+        }
     }
-  }
 };
 </script>

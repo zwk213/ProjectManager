@@ -1,7 +1,6 @@
 <template>
-    <Row>
+    <Row ref="dataTable">
         <Table
-            ref="table"
             border
             :columns="columns"
             :data="table.data"
@@ -14,8 +13,8 @@
             class="mt-2"
             :total="pagination.total"
             :page-size-opts="pagination.sizes"
-            :current="search.page"
-            :page-size="search.size"
+            :current="pagination.search.page"
+            :page-size="pagination.search.size"
             size="small"
             show-elevator
             show-sizer
@@ -24,19 +23,17 @@
             @on-page-size-change="sizeChange"
         />
 
-        <Modal v-model="model.show" :title="model.title" @on-cancel="closeModel" footer-hide>
-            <div>
-                <router-view></router-view>
-            </div>
-        </Modal>
+        <RouterModel ref="routerModal"></RouterModel>
     </Row>
 </template>
 
 <script>
 import helper from "@/utils/helper.js";
+import RouterModel from "@/components/RouterModal.vue";
 
 export default {
     name: "NormalTable",
+    components: { RouterModel },
     props: {
         columns: {
             type: Array,
@@ -57,17 +54,13 @@ export default {
                 data: [],
                 height: 0
             },
-            params: {
-                page: 1,
-                size: 20
-            },
             pagination: {
                 total: 0,
-                sizes: [20, 40, 80, 100]
-            },
-            model: {
-                show: false,
-                title: ""
+                sizes: [20, 40, 80, 100],
+                search: {
+                    page: 1,
+                    size: 20
+                }
             }
         };
     },
@@ -75,7 +68,7 @@ export default {
         //原生offsetTop指与父元素的间距，非元素与顶部间距
         this.table.height =
             window.innerHeight -
-            helper.node.offset(this.$refs.table.$el).top -
+            helper.node.offset(this.$refs.dataTable.$el).top -
             40;
     },
     created: function() {
@@ -85,7 +78,7 @@ export default {
         //表格
         load: function() {
             //合并搜索条件
-            var temp = Object.assign({}, this.search, this.params);
+            var temp = Object.assign({}, this.search, this.pagination.search);
             this.$api.get(this.apiUrl, temp).then(rsp => {
                 this.table.data = rsp.data.data;
                 this.pagination.total = rsp.data.count;
@@ -102,12 +95,7 @@ export default {
         },
         //模态框
         openModel: function(title, path) {
-            this.model.show = true;
-            this.model.title = title;
-            this.$router.push(path);
-        },
-        closeModel: function() {
-            this.$router.back();
+            this.$refs.routerModal.openModel(title, path);
         }
     }
 };

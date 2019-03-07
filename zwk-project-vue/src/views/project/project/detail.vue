@@ -4,8 +4,8 @@
         <div class="bg-white mb-3 relative">
             <!--操作-->
             <div class="absolute" style="top:1rem;right:1rem">
-                <ButtonGroup>
-                    <Button>编辑</Button>
+                <ButtonGroup size="small">
+                    <Button type="primary">编辑</Button>
                 </ButtonGroup>
             </div>
             <!--信息-->
