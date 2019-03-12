@@ -43,8 +43,6 @@ namespace ZwkProject
             services.AddScoped(typeof(DbContext), typeof(ProjectDbContext));
             services.AddScoped(typeof(IDataLayer<>), typeof(DataLayer<>));
             services.AddScoped(typeof(ICacheDataLayer<>), typeof(CacheDataLayer<>));
-            //缓存部分
-            //services.AddSingleton(typeof(IDistributedCache),)
 
             //业务模块部分
             AssemblyName[] assemblyNames = Assembly.GetEntryAssembly().GetReferencedAssemblies().Where(p => p.Name.EndsWith("Module")).ToArray();
@@ -53,6 +51,14 @@ namespace ZwkProject
             blls.ForEach(p => { services.AddScoped(p); });
             //jwt
             services.AddScoped(typeof(ISecurityTokenValidator), typeof(JwtTokenValidator));
+            #endregion
+
+            #region 缓存
+            services.AddDistributedRedisCache(options =>
+            {
+                options.Configuration = Configuration["Redis:Configuration"];
+                options.InstanceName = Configuration["Redis:InstanceName"];
+            });
             #endregion
 
             #region jwt验证
