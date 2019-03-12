@@ -21,8 +21,10 @@ namespace ProjectModule.Map
             builder.Property(p => p.ProjectId).HasColumnName("project_id");
             builder.Property(p => p.Name).HasColumnName("name");
             builder.Property(p => p.Remark).HasColumnName("remark");
-            builder.Property(p => p.Status).HasColumnName("status");
-            builder.Property(p => p.Priority).HasColumnName("priority");
+
+            builder.Property(p => p.Start).HasColumnName("start");
+            builder.Property(p => p.End).HasColumnName("end");
+
         }
     }
 }

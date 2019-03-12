@@ -10,9 +10,9 @@ namespace ProjectModule.Bll
 {
     public class ScheduleBll
     {
-        private readonly IDataLayer<Schedule> _scheduleDataLayer;
+        private readonly ICacheDataLayer<Schedule> _scheduleDataLayer;
 
-        public ScheduleBll(IDataLayer<Schedule> issueGroupDataLayer)
+        public ScheduleBll(ICacheDataLayer<Schedule> issueGroupDataLayer)
         {
             _scheduleDataLayer = issueGroupDataLayer;
         }

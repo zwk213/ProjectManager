@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -37,14 +38,17 @@ namespace ZwkProject
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             #region 依赖注入
-            services.AddDbContext<ProjectDbContext>(options =>
-                options.UseMySql(Configuration.GetConnectionString("MySqlConnection")));
+            //数据库部分
+            services.AddDbContext<ProjectDbContext>(options => options.UseMySql(Configuration.GetConnectionString("MySqlConnection")));
             services.AddScoped(typeof(DbContext), typeof(ProjectDbContext));
             services.AddScoped(typeof(IDataLayer<>), typeof(DataLayer<>));
-            //获取所有模块
+            services.AddScoped(typeof(ICacheDataLayer<>), typeof(CacheDataLayer<>));
+            //缓存部分
+            //services.AddSingleton(typeof(IDistributedCache),)
+
+            //业务模块部分
             AssemblyName[] assemblyNames = Assembly.GetEntryAssembly().GetReferencedAssemblies().Where(p => p.Name.EndsWith("Module")).ToArray();
             List<Assembly> assemblyList = assemblyNames.Select(Assembly.Load).ToList();
-            //注入各模块的业务
             var blls = assemblyList.SelectMany(p => p.DefinedTypes).Where(p => p.Name.EndsWith("Bll")).ToList();
             blls.ForEach(p => { services.AddScoped(p); });
             //jwt
@@ -101,6 +105,7 @@ namespace ZwkProject
         {
             if (env.IsDevelopment())
             {
+
                 //使用测试环境异常信息页 
                 app.UseDeveloperExceptionPage();
             }
@@ -109,8 +114,6 @@ namespace ZwkProject
                 //https传输
                 app.UseHsts();
             }
-
-            app.UseMiddleware<Mid>();
 
             //跨域
             app.UseCors("AllowAllOrigin");

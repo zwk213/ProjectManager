@@ -11,9 +11,9 @@ namespace UserModule.Bll
 {
     public class UserBll
     {
-        private readonly IDataLayer<User> _userDataLayer;
+        private readonly ICacheDataLayer<User> _userDataLayer;
 
-        public UserBll(IDataLayer<User> userDataLayer, IDataLayer<UserInGroup> userInGroupDataLayer)
+        public UserBll(ICacheDataLayer<User> userDataLayer, IDataLayer<UserInGroup> userInGroupDataLayer)
         {
             _userDataLayer = userDataLayer;
         }
@@ -35,7 +35,7 @@ namespace UserModule.Bll
 
         public async Task<User> GetAsync(string key)
         {
-            return await _userDataLayer.SelectAsync(p => p.PrimaryKey == key);
+            return await _userDataLayer.SelectAsync(key);
         }
 
         public async Task<PageData<User>> GetListAsync(string userName, string orderby, int page, int size)
