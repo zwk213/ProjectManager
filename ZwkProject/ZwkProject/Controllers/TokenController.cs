@@ -5,7 +5,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using CoreHelper;
+using JsonHelper;
 using JwtService;
 using LogModule.Bll;
 using LogModule.Model;
@@ -49,7 +49,7 @@ namespace ZwkProject.Controllers
             else
             {
                 log.Create(user.PrimaryKey);
-                log.Model = JsonHelper.Serialize(user);
+                log.Model = Json.Serialize(user);
                 log.LinkId = user.PrimaryKey;
                 await _logBll.AddAsync(log);
             }

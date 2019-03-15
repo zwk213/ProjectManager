@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CoreHelper;
 using EFHelper.Model;
+using JsonHelper;
 using JwtService;
 using LogModule.Bll;
 using Microsoft.AspNetCore.Authorization;
@@ -45,7 +45,7 @@ namespace ZwkProject.Controllers
             await _logBll.AddAsync(
                 Request.RequestUser().UserId,
                 Request.RequestUser().UserName + "添加了用户：" + user.UserName,
-                JsonHelper.Serialize(user),
+                Json.Serialize(user),
                 user.PrimaryKey
             );
             return new JsonResult(new { success = true });
@@ -61,7 +61,7 @@ namespace ZwkProject.Controllers
             await _logBll.AddAsync(
                 Request.RequestUser().UserId,
                 Request.RequestUser().UserName + "更新了用户：" + user.UserName,
-                JsonHelper.Serialize(user),
+                Json.Serialize(user),
                 user.PrimaryKey
             );
             return new JsonResult(new { success = true });
@@ -97,7 +97,7 @@ namespace ZwkProject.Controllers
             await _logBll.AddAsync(
                 Request.RequestUser().UserId,
                 Request.RequestUser().UserName + "添加了用户组：" + group.GroupName,
-                JsonHelper.Serialize(group),
+                Json.Serialize(group),
                 group.PrimaryKey
             );
             return new JsonResult(new { success = true });

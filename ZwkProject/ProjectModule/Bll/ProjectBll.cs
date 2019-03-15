@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,8 +32,49 @@ namespace ProjectModule.Bll
             return await _projectDataLayer.SelectAsync(key);
         }
 
-        public async Task<PageData<Project>> GetListAsync(string name, string orderby, int page, int size)
+        public List<string> SelectKeys(Expression<Func<Project, bool>> where, string orderby, int page, int size)
         {
+            var result = _projectDataLayer.DbContext.Set<Project>()
+                .Where(where)
+                .SortBy(orderby)
+                .Skip((page - 1) * size)
+                .Take(size)
+                .Select(p => p.PrimaryKey)
+                .ToList();
+            return result;
+        }
+
+        public List<Project> SelectAny(List<string> keys, out List<string> notInCache)
+        {
+            List<Project> result = new List<Project>();
+            notInCache = new List<string>();
+            foreach (var key in keys)
+            {
+                var temp = _projectDataLayer.CacheService.Get<Project>(key);
+                if (temp != null)
+                    result.Add(temp);
+                else
+                    notInCache.Add(key);
+            }
+            return result;
+        }
+
+
+        public async Task<PageData<Project>> GetPageAsync(string name, string orderby, int page, int size)
+        {
+
+            var keys = SelectKeys(p => true, orderby, page, size);
+            var data = SelectAny(keys, out var not);
+
+            PageData<Project> result = new PageData<Project>()
+            {
+                Page = page,
+                Size = size,
+                Count = 0,
+                Data = data,
+            };
+
+
             Expression<Func<Project, bool>> where = p => true;
             if (!string.IsNullOrEmpty(name))
                 where = where.And(p => p.Name.Contains(name));

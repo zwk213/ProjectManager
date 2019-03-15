@@ -13,7 +13,7 @@ namespace UserModule.Bll
     {
         private readonly ICacheDataLayer<User> _userDataLayer;
 
-        public UserBll(ICacheDataLayer<User> userDataLayer, IDataLayer<UserInGroup> userInGroupDataLayer)
+        public UserBll(ICacheDataLayer<User> userDataLayer)
         {
             _userDataLayer = userDataLayer;
         }

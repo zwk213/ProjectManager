@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using CoreHelper;
 using EFHelper.Model;
 using ProjectModule.Enum;
+using ValidateHelper;
 
 namespace ProjectModule.Model
 {

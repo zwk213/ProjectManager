@@ -4,6 +4,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using CacheHelper.Achieve;
+using CacheHelper.Interface;
 using EFHelper.Achieve;
 using EFHelper.Interface;
 using JwtService;
@@ -43,6 +45,8 @@ namespace ZwkProject
             services.AddScoped(typeof(DbContext), typeof(ProjectDbContext));
             services.AddScoped(typeof(IDataLayer<>), typeof(DataLayer<>));
             services.AddScoped(typeof(ICacheDataLayer<>), typeof(CacheDataLayer<>));
+            //缓存
+            services.AddScoped(typeof(ICacheService), typeof(CacheService));
 
             //业务模块部分
             AssemblyName[] assemblyNames = Assembly.GetEntryAssembly().GetReferencedAssemblies().Where(p => p.Name.EndsWith("Module")).ToArray();
@@ -109,17 +113,19 @@ namespace ZwkProject
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
 
-                //使用测试环境异常信息页 
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                //https传输
-                app.UseHsts();
-            }
+            app.UseMiddleware<ExceptionMidWare>();
+
+            //if (env.IsDevelopment())
+            //{
+            //    //使用测试环境异常信息页 
+            //    app.UseDeveloperExceptionPage();
+            //}
+            //else
+            //{
+            //    //https传输
+            //    app.UseHsts();
+            //}
 
             //跨域
             app.UseCors("AllowAllOrigin");

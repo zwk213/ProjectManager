@@ -3,7 +3,8 @@ import store from '@/store.js'
 import token from '@/utils/token.js'
 
 var instance = axios.create({
-    baseURL: "http://148.70.62.73:9000/api",
+    //baseURL: "http://148.70.62.73:9000/api",
+    baseURL: "http://localhost:2885/api",
     timeout: 30000,
 });
 
@@ -11,7 +12,7 @@ var instance = axios.create({
 const whitelistPaths = '/token/login;/token/refresh'
 //请求拦截
 instance.interceptors.request.use(
-    config=>{
+    config => {
         //需要拦截的页面
         if (whitelistPaths.indexOf(config.url) < 0) {
             //添加token

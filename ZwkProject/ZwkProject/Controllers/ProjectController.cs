@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
-using CoreHelper;
-using CoreHelper.Json;
 using EFHelper.Model;
+using JsonHelper;
 using JwtService;
 using LogModule.Bll;
 using Microsoft.AspNetCore.Authorization;
@@ -53,7 +52,7 @@ namespace ZwkProject.Controllers
             await _logBll.AddAsync(
                 Request.RequestUser().UserId,
                 Request.RequestUser().UserName + "创建了项目：" + project.Name,
-                JsonHelper.Serialize(project),
+                Json.Serialize(project),
                 project.PrimaryKey
             );
             return new JsonResult(new { success = true });
@@ -69,7 +68,7 @@ namespace ZwkProject.Controllers
             await _logBll.AddAsync(
                 Request.RequestUser().UserId,
                 Request.RequestUser().UserName + "修改了项目：" + project.Name,
-                JsonHelper.Serialize(project),
+                Json.Serialize(project),
                 project.PrimaryKey
             );
             return new JsonResult(new { success = true });
@@ -85,9 +84,9 @@ namespace ZwkProject.Controllers
 
         [Route("/api/project/getPage")]
         [HttpGet]
-        public async Task<IActionResult> GetProjectPage(int page, int size)
+        public async Task<IActionResult> GetProjectPage(string name, int page, int size)
         {
-            PageData<Project> result = await _projectBll.GetListAsync("CreateDate Desc", page, size);
+            PageData<Project> result = await _projectBll.GetPageAsync(name, "CreateDate Desc", page, size);
             return new JsonResult(new { success = true, data = result });
         }
 
@@ -105,7 +104,7 @@ namespace ZwkProject.Controllers
             await _logBll.AddAsync(
                 Request.RequestUser().UserId,
                 Request.RequestUser().UserName + "添加了时间节点：" + schedule.Name,
-                JsonHelper.Serialize(schedule),
+                Json.Serialize(schedule),
                 schedule.ProjectId
             );
             return new JsonResult(new { success = true });
@@ -121,7 +120,7 @@ namespace ZwkProject.Controllers
             await _logBll.AddAsync(
                 Request.RequestUser().UserId,
                 Request.RequestUser().UserName + "更新了时间节点：" + schedule.Name,
-                JsonHelper.Serialize(schedule),
+                Json.Serialize(schedule),
                 schedule.ProjectId
             );
             return new JsonResult(new { success = true });
@@ -178,7 +177,7 @@ namespace ZwkProject.Controllers
             await _logBll.AddAsync(
                 Request.RequestUser().UserId,
                 Request.RequestUser().UserName + "添加了问题：" + issue.Summary,
-                JsonHelper.Serialize(issue),
+                Json.Serialize(issue),
                 issue.ProjectId
             );
             return new JsonResult(new { success = true });
@@ -213,7 +212,7 @@ namespace ZwkProject.Controllers
             await _logBll.AddAsync(
                 Request.RequestUser().UserId,
                 Request.RequestUser().UserName + "更新了问题：" + issue.Summary,
-                JsonHelper.Serialize(issue),
+                Json.Serialize(issue),
                 issue.ProjectId
             );
             return new JsonResult(new { success = true });
@@ -231,7 +230,7 @@ namespace ZwkProject.Controllers
             await _logBll.AddAsync(
                 Request.RequestUser().UserId,
                 Request.RequestUser().UserName + "更新了问题【" + issue.Summary + "】状态为" + issue.Status.ToString() + "",
-                JsonHelper.Serialize(issue),
+                Json.Serialize(issue),
                 issue.ProjectId
             );
             return new JsonResult(new { success = true });
@@ -272,7 +271,7 @@ namespace ZwkProject.Controllers
             await _logBll.AddAsync(
                 Request.RequestUser().UserId,
                 Request.RequestUser().UserName + "添加了项目用户：" + user.UserName,
-                JsonHelper.Serialize(user),
+                Json.Serialize(user),
                 user.ProjectId
             );
             return new JsonResult(new { success = true });
@@ -287,7 +286,7 @@ namespace ZwkProject.Controllers
             await _logBll.AddAsync(
                 Request.RequestUser().UserId,
                 Request.RequestUser().UserName + "更新了项目用户：" + user.UserName,
-                JsonHelper.Serialize(user),
+                Json.Serialize(user),
                 user.ProjectId
             );
             return new JsonResult(new { success = true });
@@ -323,7 +322,7 @@ namespace ZwkProject.Controllers
             await _logBll.AddAsync(
                 Request.RequestUser().UserId,
                 Request.RequestUser().UserName + "添加了项目文件夹：" + folder.Name,
-                JsonHelper.Serialize(folder),
+                Json.Serialize(folder),
                 folder.ProjectId
             );
             return new JsonResult(new { success = true });
@@ -339,7 +338,7 @@ namespace ZwkProject.Controllers
             await _logBll.AddAsync(
                 Request.RequestUser().UserId,
                 Request.RequestUser().UserName + "更新了项目文件夹：" + folder.Name,
-                JsonHelper.Serialize(folder),
+                Json.Serialize(folder),
                 folder.ProjectId
             );
             return new JsonResult(new { success = true });
@@ -376,7 +375,7 @@ namespace ZwkProject.Controllers
             await _logBll.AddAsync(
                 Request.RequestUser().UserId,
                 Request.RequestUser().UserName + "添加了项目文件：" + file.Name,
-                JsonHelper.Serialize(file),
+                Json.Serialize(file),
                 file.ProjectId
             );
             return new JsonResult(new { success = true });
@@ -393,7 +392,7 @@ namespace ZwkProject.Controllers
             await _logBll.AddAsync(
                 Request.RequestUser().UserId,
                 Request.RequestUser().UserName + "更新了项目文件：" + file.Name,
-                JsonHelper.Serialize(file),
+                Json.Serialize(file),
                 file.ProjectId
             );
             return new JsonResult(new { success = true });
@@ -429,7 +428,7 @@ namespace ZwkProject.Controllers
             await _logBll.AddAsync(
                 Request.RequestUser().UserId,
                 Request.RequestUser().UserName + "添加了项目地址：" + link.Name,
-                JsonHelper.Serialize(link),
+                Json.Serialize(link),
                 link.ProjectId
             );
             return new JsonResult(new { success = true });
@@ -445,7 +444,7 @@ namespace ZwkProject.Controllers
             await _logBll.AddAsync(
                 Request.RequestUser().UserId,
                 Request.RequestUser().UserName + "更新了项目地址：" + link.Name,
-                JsonHelper.Serialize(link),
+                Json.Serialize(link),
                 link.ProjectId
             );
             return new JsonResult(new { success = true });
@@ -461,7 +460,7 @@ namespace ZwkProject.Controllers
             await _logBll.AddAsync(
                 Request.RequestUser().UserId,
                 Request.RequestUser().UserName + "删除了项目地址：" + link.Name,
-                JsonHelper.Serialize(link),
+                Json.Serialize(link),
                 link.ProjectId
             );
             return new JsonResult(new { success = true });
