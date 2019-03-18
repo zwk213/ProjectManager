@@ -24,9 +24,8 @@ namespace ProjectModule.Map
 
             builder.Property(p => p.Name).HasColumnName("name");
             builder.Property(p => p.Link).HasColumnName("link");
-            builder.Property(p => p.Remark).HasColumnName("remark");
-            builder.Property(p => p.UpdateName).HasColumnName("update_name");
 
+            builder.Property(p => p.Type).HasColumnName("type");
             builder.Property(p => p.Status).HasColumnName("status");
         }
     }

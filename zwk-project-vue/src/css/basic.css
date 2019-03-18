@@ -1,97 +1,97 @@
-*{
+* {
     box-sizing: border-box;
 }
 
-html{
+html {
     font-size: 14px;
 }
 
-body{
+body {
     margin: 0;
-    font-family: Roboto,San Francisco,"Helvetica Neue",Helvetica,Arial,PingFangSC-Light,"Hiragina Sans GB","WenQuanYi Micro Hei",'microsoft yahei ui','microsoft yahei',sans-serif;
+    font-family: Roboto, San Francisco, "Helvetica Neue", Helvetica, Arial, PingFangSC-Light, "Hiragina Sans GB", "WenQuanYi Micro Hei", 'microsoft yahei ui', 'microsoft yahei', sans-serif;
     font-size: 14px;
 }
 
-a{
-    text-decoration:  none;
+a {
+    text-decoration: none;
 }
 
-image{
-    display:inline-block;
+image {
+    display: inline-block;
 }
 
-p{
+p {
     margin: 0 0 0.5rem;
 }
 
-pre{
+pre {
     white-space: pre-wrap;
     margin: 0;
     line-height: 1.5rem;
     word-break: break-word;
 }
 
-.pointer{
+.pointer {
     cursor: pointer;
 }
 
-.hover:hover{
+.hover:hover {
     cursor: pointer;
-    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
 }
 
 /*字号 相对14px*/
-.font-sm{
+.font-sm {
     font-size: 0.8571rem;
-    line-height:1.5em;
+    line-height: 1.5em;
 }
 
-.font-md{
+.font-md {
     font-size: 1rem;
-    line-height:1.5em;
+    line-height: 1.5em;
 }
 
-.font-lg{
+.font-lg {
     font-size: 1.1428rem;
-    line-height:1.5em;
+    line-height: 1.5em;
 }
 
-.font-2x{
+.font-2x {
     font-size: 2rem;
 }
 
-.bold{
+.bold {
     font-weight: bold;
 }
 
 /*文字*/
-.text-left{
+.text-left {
     text-align: left;
 }
 
-.text-center{
+.text-center {
     text-align: center;
 }
 
-.text-right{
+.text-right {
     text-align: right;
 }
 
 /*溢出*/
-.over-hidden{
+.over-hidden {
     overflow: hidden;
 }
 
 /*布局*/
-.fixed{
+.fixed {
     position: fixed;
 }
 
-.relative{
+.relative {
     position: relative;
 }
 
-.absolute{
+.absolute {
     position: absolute;
 }
 
@@ -269,7 +269,7 @@ pre{
 
 /*内边距*/
 .p-0 {
-    padding: 0 ;
+    padding: 0;
 }
 
 .pt-0 {
@@ -309,7 +309,7 @@ pre{
 }
 
 .p-2 {
-    padding: 0.5rem ;
+    padding: 0.5rem;
 }
 
 .pt-2 {
@@ -329,7 +329,7 @@ pre{
 }
 
 .p-3 {
-    padding: 1rem ;
+    padding: 1rem;
 }
 
 .pt-3 {
@@ -349,7 +349,7 @@ pre{
 }
 
 .p-4 {
-    padding: 1.5rem ;
+    padding: 1.5rem;
 }
 
 .pt-4 {
@@ -369,7 +369,7 @@ pre{
 }
 
 .p-5 {
-    padding: 3rem ;
+    padding: 3rem;
 }
 
 .pt-5 {
@@ -559,40 +559,40 @@ pre{
     border-left: 0 !important;
 }
 
-.rounded{
+.rounded {
     border-radius: 4px;
 }
 
-.circle{
+.circle {
     border-radius: 1000px;
 }
 
-.shadow{
-    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2);
+.shadow {
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
 }
 
 /*宽高*/
-.w-full{
+.w-full {
     width: 100%;
 }
 
-.w-half{
+.w-half {
     width: 50%;
 }
 
-.w-quarter{
+.w-quarter {
     width: 25%;
 }
 
-.w-5{
+.w-5 {
     width: 5rem;
 }
 
-.w-10{
+.w-10 {
     width: 10rem;
 }
 
-.w-15{
+.w-15 {
     width: 15rem;
 }
 
@@ -604,18 +604,28 @@ pre{
     width: 25rem;
 }
 
-.w-30{
+.w-30 {
     width: 30rem;
 }
 
-.w-45{
+.w-45 {
     width: 45rem;
 }
 
-.w-60{
+.w-60 {
     width: 60rem;
 }
 
-.h-full{
+.h-full {
     height: 100%;
+}
+
+/* 隐藏 */
+.hiddle {
+    display: none
+}
+
+/* 不可见 */
+.invisible {
+    visibility: hidden;
 }

@@ -19,9 +19,11 @@ namespace ProjectModule.Map
             builder.Property(p => p.UpdateBy).HasColumnName("update_by");
 
             builder.Property(p => p.ProjectId).HasColumnName("project_id");
+            builder.Property(p => p.ScheduleId).HasColumnName("schedule_id");
             builder.Property(p => p.ParentId).HasColumnName("parent_id");
+
             builder.Property(p => p.Name).HasColumnName("name");
-            builder.Property(p => p.Remark).HasColumnName("remark");
+
         }
     }
 }

@@ -6,6 +6,7 @@
             :label="item.label"
             :prop="'items.' + index + '.value'"
             :rules="item.rules"
+            v-bind:class="{'hiddle':item.hiddle}"
         >
             <!--固定值-->
             <template v-if="item.type=='static'">
@@ -14,6 +15,10 @@
             <!--输入框-->
             <template v-if="item.type=='input'">
                 <Input type="text" v-model="item.value"></Input>
+            </template>
+            <!--文本域-->
+            <template v-if="item.type=='textarea'">
+                <Input type="textarea" v-model="item.value" autosize="true"></Input>
             </template>
             <!--下拉框-->
             <template v-if="item.type=='select'">
@@ -42,6 +47,7 @@
 //     label: "输入内容释义",
 //     field: "字段名",
 //     value: "数据值",
+//     hiddle: false,
 //     options: "select类型的枚举值",
 //     rules: [] //验证相关
 // };

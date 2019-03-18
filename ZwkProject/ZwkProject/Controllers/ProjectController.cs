@@ -369,7 +369,6 @@ namespace ZwkProject.Controllers
         public async Task<IActionResult> AddFile(File file)
         {
             file.Create(Request.RequestUser().UserId);
-            file.UpdateName = Request.RequestUser().UserName;
             await _fileBll.AddAsync(file);
             //日志
             await _logBll.AddAsync(
@@ -386,7 +385,6 @@ namespace ZwkProject.Controllers
         public async Task<IActionResult> UpdateFile(File file)
         {
             file.Create(Request.RequestUser().UserId);
-            file.UpdateName = Request.RequestUser().UserName;
             await _fileBll.AddAsync(file);
             //日志
             await _logBll.AddAsync(

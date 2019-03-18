@@ -78,7 +78,16 @@ export default new Router({
                             }, {
                                 path: "schedule",
                                 name: "时间线",
-                                component: () => import('@/views/project/schedule/list.vue')
+                                component: () => import('@/views/project/schedule/list.vue'),
+                                children: [{
+                                    path: "add",
+                                    name: "添加时间节点",
+                                    component: () => import('@/views/project/schedule/add.vue')
+                                }, {
+                                    path: "edit",
+                                    name: "编辑时间节点",
+                                    component: () => import('@/views/project/schedule/edit.vue')
+                                }]
                             }, {
                                 path: "issue",
                                 name: "问题",

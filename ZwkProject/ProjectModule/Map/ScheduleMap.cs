@@ -22,9 +22,8 @@ namespace ProjectModule.Map
             builder.Property(p => p.Name).HasColumnName("name");
             builder.Property(p => p.Remark).HasColumnName("remark");
 
-            builder.Property(p => p.Start).HasColumnName("start");
-            builder.Property(p => p.End).HasColumnName("end");
-
+            builder.Property(p => p.Start).HasColumnName("start").HasColumnType("datetime");
+            builder.Property(p => p.End).HasColumnName("end").HasColumnType("datetime");
         }
     }
 }

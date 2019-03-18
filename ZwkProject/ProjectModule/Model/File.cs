@@ -18,11 +18,10 @@ namespace ProjectModule.Model
 
         public string Link { get; set; }
 
-        public string Remark { get; set; }
-
-        public string UpdateName { get; set; }
+        public FileType Type { get; set; }
 
         public FileStatus Status { get; set; }
 
     }
+
 }
