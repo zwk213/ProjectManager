@@ -18,9 +18,10 @@ namespace ProjectModule.Bll
             _scheduleDataLayer = issueGroupDataLayer;
         }
 
-        public async Task AddAsync(Schedule group)
+        public async Task AddAsync(Schedule schedule)
         {
-            await _scheduleDataLayer.InsertAsync(group);
+            schedule.Validate();
+            await _scheduleDataLayer.InsertAsync(schedule);
         }
 
         public async Task<PageData<Schedule>> GetListAsync(string projectId, string orderby, int page, int size)
@@ -33,9 +34,14 @@ namespace ProjectModule.Bll
             return await _scheduleDataLayer.SelectAsync(p => p.PrimaryKey == primaryKey);
         }
 
-        public async Task UpdateAsync(Schedule group)
+        public async Task UpdateAsync(Schedule schedule)
         {
-            await _scheduleDataLayer.UpdateAsync(group);
+            var temp = await GetAsync(schedule.PrimaryKey);
+            if(temp==null)
+                throw new Exception("未发现该时间节点");
+            temp.UpdateFrom(schedule);
+            temp.Validate();
+            await _scheduleDataLayer.UpdateAsync(temp);
         }
 
     }

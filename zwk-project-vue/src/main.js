@@ -16,6 +16,9 @@ import '@/css/extend.css'
 import '@/css/utils.css'
 import '@/css/theme.css'
 
+//导入扩展
+import "@/utils/extend.js"
+
 //初始化执行权限判定
 import "@/utils/permission.js"
 

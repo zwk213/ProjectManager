@@ -43,11 +43,11 @@ namespace ProjectModule.Bll
 
         public async Task UpdateAsync(Project project)
         {
-            project.Validate();
             var temp = await GetAsync(project.PrimaryKey);
             if (temp == null)
                 throw new Exception("未发现该项目");
             temp.UpdateFrom(project);
+            temp.Validate();
             await _projectDataLayer.UpdateAsync(project);
         }
 

@@ -5,8 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EFHelper" Version="1.1.12" />
-    <PackageReference Include="ValidateHelper" Version="1.0.1" />
+    <PackageReference Include="EFHelper" Version="1.2.2" />
   </ItemGroup>
 
 </Project>

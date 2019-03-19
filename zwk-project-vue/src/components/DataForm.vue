@@ -18,7 +18,7 @@
             </template>
             <!--文本域-->
             <template v-if="item.type=='textarea'">
-                <Input type="textarea" v-model="item.value" autosize="true"></Input>
+                <Input type="textarea" v-model="item.value" :autosize="{minRows: 2,maxRows: 10}"></Input>
             </template>
             <!--下拉框-->
             <template v-if="item.type=='select'">
@@ -32,7 +32,7 @@
             </template>
             <!--时间选择器-->
             <template v-if="item.type=='datepicker'">
-                <DatePicker type="date" v-model="item.value"></DatePicker>
+                <DatePicker type="date" v-model="item.value" value='yyyy-MM-dd'></DatePicker>
             </template>
         </FormItem>
         <FormItem>
@@ -73,7 +73,8 @@ export default {
             var form = {};
             for (let i = 0; i < this.dataForm.items.length; i++) {
                 var temp = this.dataForm.items[i];
-                form[temp.field] = temp.value;
+                //时间格式化，否则后台接收有问题
+                form[temp.field] =temp.value instanceof Date? temp.value.format():temp.value;
             }
             this.$refs["data-form"].validate(valid => {
                 if (valid) {

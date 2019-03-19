@@ -95,6 +95,15 @@ pre {
     position: absolute;
 }
 
+/* 浮动 */
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
 /*弹性布局*/
 .flex-row {
     display: flex;

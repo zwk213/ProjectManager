@@ -9,7 +9,7 @@ export default {
     components: { DataForm },
     data: function() {
         return {
-            submitUrl: this.$api.project.url.add,
+            submitUrl: this.$api.project.url.update,
             model: [
                 {
                     type: "static",

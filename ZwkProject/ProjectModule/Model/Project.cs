@@ -21,9 +21,9 @@ namespace ProjectModule.Model
         /// <summary>
         /// 验证模型是否符合要求
         /// </summary>
-        public void Validate()
+        public override void Validate()
         {
-            PrimaryKey.HasValue("主键必填").MaxLength(50, "主键最大长度50");
+            base.Validate();
             Name.HasValue("姓名必填").MaxLength(50, "姓名最大长度50");
             Logo.HasValue("Logo必填").MaxLength(50, "Logo最大长度50");
         }
@@ -35,12 +35,11 @@ namespace ProjectModule.Model
         /// <param name="project"></param>
         public void UpdateFrom(Project project)
         {
+            base.UpdateFrom(project);
             Name = project.Name;
             Logo = project.Logo;
             Status = project.Status;
             Type = project.Type;
-            UpdateBy = project.UpdateBy;
-            UpdateDate = project.UpdateDate;
         }
 
     }

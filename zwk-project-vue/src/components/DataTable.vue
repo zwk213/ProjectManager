@@ -68,7 +68,7 @@ export default {
         //原生offsetTop指与父元素的间距，非元素与顶部间距
         this.table.height =
             window.innerHeight -
-            helper.node.offset(this.$refs.dataTable.$el).top -
+            helper.offset(this.$refs.dataTable.$el).top -
             40;
     },
     created: function() {
