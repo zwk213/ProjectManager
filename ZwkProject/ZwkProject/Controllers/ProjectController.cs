@@ -142,6 +142,14 @@ namespace ZwkProject.Controllers
             return new JsonResult(new { success = true, data = result.Data });
         }
 
+        [Route("/api/project/schedule/getOptions")]
+        [HttpGet]
+        public async Task<IActionResult> GetScheduleOptions(string projectId)
+        {
+            var result = await _scheduleBll.GetOptionsAsync(projectId);
+            return new JsonResult(new { success = true, data = result });
+        }
+
         #endregion
 
         #region issue
@@ -304,8 +312,16 @@ namespace ZwkProject.Controllers
         [HttpGet]
         public async Task<IActionResult> GetUserList(string projectId)
         {
-            PageData<User> result = await _userBll.GetListAsync(projectId, "CreateDate Desc", 1, 1000);
+            PageData<User> result = await _userBll.GetListAsync(projectId, "Type", 1, 1000);
             return new JsonResult(new { success = true, data = result.Data });
+        }
+
+        [Route("/api/project/user/getOptions")]
+        [HttpGet]
+        public async Task<IActionResult> GetUserOptions(string projectId)
+        {
+            var result = await _userBll.GetOptionsAsync(projectId);
+            return new JsonResult(new { success = true, data = result });
         }
 
         #endregion

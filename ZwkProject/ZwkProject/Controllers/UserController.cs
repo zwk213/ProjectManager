@@ -83,6 +83,14 @@ namespace ZwkProject.Controllers
             return new JsonResult(new { success = true, data = user });
         }
 
+        [Route("/api/user/getOptions")]
+        [HttpGet]
+        public async Task<IActionResult> GetUserOptions()
+        {
+            var result = await _userBll.GetOptionsAsync();
+            return new JsonResult(new { success = true, data = result });
+        }
+
         #endregion
 
         #region group

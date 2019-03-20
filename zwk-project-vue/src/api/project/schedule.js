@@ -5,6 +5,7 @@ const schedule = {
     url: {
         get: "/project/schedule/get",
         getList: "/project/schedule/getList",
+        getOptions: "/project/schedule/getOptions",
         add: "/project/schedule/add",
         update: "/project/schedule/update",
     },
@@ -15,6 +16,11 @@ const schedule = {
     },
     getList: function (params) {
         return axios.get(schedule.url.getList, {
+            params: params
+        })
+    },
+    getOptions: function (params) {
+        return axios.get(schedule.url.getOptions, {
             params: params
         })
     },

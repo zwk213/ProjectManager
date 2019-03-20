@@ -13,15 +13,16 @@ namespace ProjectModule.Bll
 {
     public class IssueBll
     {
-        private readonly IDataLayer<Issue> _issueDataLayer;
+        private readonly ICacheDataLayer<Issue> _issueDataLayer;
 
-        public IssueBll(IDataLayer<Issue> issueDataLayer)
+        public IssueBll(ICacheDataLayer<Issue> issueDataLayer)
         {
             _issueDataLayer = issueDataLayer;
         }
 
         public async Task AddAsync(Issue issue)
         {
+            issue.Validate();
             await _issueDataLayer.InsertAsync(issue);
         }
 
@@ -40,7 +41,12 @@ namespace ProjectModule.Bll
 
         public async Task UpdateAsync(Issue issue)
         {
-            await _issueDataLayer.UpdateAsync(issue);
+            var temp = await GetAsync(issue.PrimaryKey);
+            if(temp==null)
+                throw new Exception("未发现该问题");
+            temp.UpdateFrom(issue);
+            temp.Validate();
+            await _issueDataLayer.UpdateAsync(temp);
         }
 
     }

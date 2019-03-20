@@ -4,21 +4,18 @@ using System.Text;
 
 namespace ProjectModule.Enum
 {
-    public enum Priority
+    public enum UserType
     {
-        /// <summary>
-        /// 低
-        /// </summary>
-        Low = 0,
 
         /// <summary>
-        /// 正常
+        /// 内部用户
         /// </summary>
-        Normal = 1,
+        Internal,
 
         /// <summary>
-        /// 高
+        /// 外部用户
         /// </summary>
-        High = 2,
+        External
+
     }
 }

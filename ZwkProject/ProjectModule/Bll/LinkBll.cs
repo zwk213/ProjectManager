@@ -10,9 +10,9 @@ namespace ProjectModule.Bll
 {
     public class LinkBll
     {
-        private readonly IDataLayer<Link> _linkDataLayer;
+        private readonly ICacheDataLayer<Link> _linkDataLayer;
 
-        public LinkBll(IDataLayer<Link> linkDataLayer)
+        public LinkBll(ICacheDataLayer<Link> linkDataLayer)
         {
             _linkDataLayer = linkDataLayer;
         }

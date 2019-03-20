@@ -21,11 +21,14 @@ namespace ProjectModule.Map
             builder.Property(p => p.ProjectId).HasColumnName("project_id");
             builder.Property(p => p.UserId).HasColumnName("user_id");
             builder.Property(p => p.UserName).HasColumnName("user_name");
+
             builder.Property(p => p.Post).HasColumnName("post");
             builder.Property(p => p.Phone).HasColumnName("phone");
             builder.Property(p => p.Email).HasColumnName("email");
             builder.Property(p => p.Company).HasColumnName("company");
             builder.Property(p => p.Remark).HasColumnName("remark");
+
+            builder.Property(p => p.Type).HasColumnName("type");
             builder.Property(p => p.Status).HasColumnName("status");
         }
     }

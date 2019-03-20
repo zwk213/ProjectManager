@@ -4,21 +4,22 @@ using System.Text;
 
 namespace ProjectModule.Enum
 {
-    public enum Priority
+    public enum LinkType
     {
         /// <summary>
-        /// 低
+        /// 版本管理地址
         /// </summary>
-        Low = 0,
+        Version,
 
         /// <summary>
-        /// 正常
+        /// 测试地址
         /// </summary>
-        Normal = 1,
+        Test,
 
         /// <summary>
-        /// 高
+        /// 正式地址
         /// </summary>
-        High = 2,
+        Real,
+
     }
 }

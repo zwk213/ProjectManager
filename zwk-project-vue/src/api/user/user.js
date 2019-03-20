@@ -1,11 +1,12 @@
 import axios from '@/utils/http.js'
 
 const user = {
-    url:{
-        get:"/user/get",
-        getPage:"/user/getPage",
-        add:"/user/add",
-        update:"/user/update"
+    url: {
+        get: "/user/get",
+        getPage: "/user/getPage",
+        getOptions: "/user/getOptions",
+        add: "/user/add",
+        update: "/user/update"
     },
     get: function (params) {
         return axios.get(user.url.get, {
@@ -14,6 +15,11 @@ const user = {
     },
     getPage: function (params) {
         return axios.get(user.url.getPage, {
+            params: params
+        })
+    },
+    getOptions: function (params) {
+        return axios.get(user.url.getOptions, {
             params: params
         })
     },

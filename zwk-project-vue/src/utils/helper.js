@@ -11,7 +11,7 @@ const helper = {
         }
         offset.top += node.offsetTop;
         offset.left += node.offsetLeft;
-        return helper.node.offset(node.offsetParent, offset);
+        return helper.offset(node.offsetParent, offset);
     }
 }
 

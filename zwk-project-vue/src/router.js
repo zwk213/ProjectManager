@@ -91,15 +91,46 @@ export default new Router({
                             }, {
                                 path: "issue",
                                 name: "问题",
-                                component: () => import('@/views/project/issue/list.vue')
+                                component: () => import('@/views/project/issue/list.vue'),
+                                children: [{
+                                    path: "add",
+                                    name: "添加问题",
+                                    component: () => import('@/views/project/issue/add.vue')
+                                }, {
+                                    path: "edit",
+                                    name: "编辑问题",
+                                    component: () => import('@/views/project/issue/edit.vue')
+                                }, {
+                                    path: "detail",
+                                    name: "问题详情",
+                                    component: () => import('@/views/project/issue/detail.vue')
+                                }]
                             }, {
                                 path: "user",
                                 name: "参与人员",
-                                component: () => import('@/views/project/user/list.vue')
+                                component: () => import('@/views/project/user/list.vue'),
+                                children: [{
+                                    path: "add",
+                                    name: "添加参与人员",
+                                    component: () => import('@/views/project/user/add.vue')
+                                }, {
+                                    path: "edit",
+                                    name: "编辑参与人员",
+                                    component: () => import('@/views/project/user/edit.vue')
+                                }]
                             }, {
                                 path: "link",
                                 name: "地址",
-                                component: () => import('@/views/project/link/list.vue')
+                                component: () => import('@/views/project/link/list.vue'),
+                                children: [{
+                                    path: "add",
+                                    name: "添加地址",
+                                    component: () => import('@/views/project/link/add.vue')
+                                }, {
+                                    path: "edit",
+                                    name: "编辑地址",
+                                    component: () => import('@/views/project/link/edit.vue')
+                                }]
                             }, {
                                 path: "file",
                                 name: "文件",

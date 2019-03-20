@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using EFHelper.Helper;
 using EFHelper.Interface;
 using EFHelper.Model;
+using Microsoft.EntityFrameworkCore;
 using UserModule.Enum;
 using UserModule.Model;
 
@@ -44,6 +47,19 @@ namespace UserModule.Bll
             if (!string.IsNullOrEmpty(userName))
                 where = where.And(p => p.UserName.Contains(userName));
             return await _userDataLayer.SelectPageAsync(where, orderby, page, size);
+        }
+
+        public async Task<List<SelectOption>> GetOptionsAsync()
+        {
+            var temp = await _userDataLayer.DbContext.Set<User>()
+                .OrderByDescending(p => p.CreateDate)
+                .Select(p =>
+                    new SelectOption()
+                    {
+                        Label = p.UserName,
+                        Value = p.PrimaryKey,
+                    }).ToListAsync();
+            return temp;
         }
 
         public async Task UpdateAsync(User user)

@@ -1,9 +1,15 @@
 <template>
     <div class="relative">
         <!--操作-->
-        <Button class="absolute" type="primary" style="top:1rem;right:1rem;" @click="addSchedule">添加</Button>
+        <Button
+            class="absolute bg-white"
+            type="primary"
+            ghost
+            style="right:0;"
+            @click="addSchedule"
+        >添加</Button>
         <!--内容-->
-        <Timeline pending style="margin-right:100px;" class="bg-white p-3 rounded">
+        <Timeline pending style="margin-right:75px;" class="bg-white p-3 rounded">
             <TimelineItem
                 v-for="(item, index) in schedules"
                 :key="item.primaryKey"

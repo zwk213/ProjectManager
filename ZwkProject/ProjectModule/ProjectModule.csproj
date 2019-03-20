@@ -5,7 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EFHelper" Version="1.2.2" />
+    <PackageReference Include="EFHelper" Version="1.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Model\Dto\" />
   </ItemGroup>
 
 </Project>

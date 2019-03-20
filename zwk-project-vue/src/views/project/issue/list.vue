@@ -12,12 +12,11 @@
                 <Select v-model="table.search.principal" class="w-15 mr-3" placeholder="请选择负责人">
                     <Option value="1">1</Option>
                 </Select>
-                <Button class="bg-white" type="primary" ghost>搜索</Button>
+                <Button class="bg-white" type="primary" ghost @click="search">搜索</Button>
             </Row>
             <div>
                 <ButtonGroup class="bg-white">
-                    <Button type="primary" ghost>添加文件</Button>
-                    <Button type="primary" ghost>添加文件夹</Button>
+                    <Button type="primary" ghost @click="add">添加</Button>
                 </ButtonGroup>
             </div>
         </Row>
@@ -43,12 +42,88 @@ export default {
                 search: {
                     schedule: "",
                     status: "",
-                    principal: ""
+                    principal: "",
+                    projectId: this.$route.query.projectId
                 },
-                columns: []
+                columns: [
+                    {
+                        title: "摘要",
+                        key: "summary",
+                        render: (h, params) => {
+                            return h(
+                                "a",
+                                {
+                                    on: {
+                                        click: () => {}
+                                    }
+                                },
+                                params.row.name
+                            );
+                        }
+                    },
+                    { title: "状态", key: "status", width: 80 },
+                    { title: "优先级", key: "priority", width: 80 },
+                    { title: "创建人", key: "createName", width: 100 },
+                    { title: "负责人", key: "principalName", width: 100 },
+                    { title: "创建时间", key: "createDate", width: 150 },
+                    {
+                        title: "操作",
+                        width: 80,
+                        render: (h, params) => {
+                            return h("div", [
+                                h(
+                                    "Button",
+                                    {
+                                        props: {
+                                            type: "primary",
+                                            size: "small"
+                                        },
+                                        style: {
+                                            marginRight: "5px"
+                                        },
+                                        on: {
+                                            click: () => {
+                                                this.edit(
+                                                    params.row.primaryKey
+                                                );
+                                            }
+                                        }
+                                    },
+                                    "编辑"
+                                )
+                            ]);
+                        }
+                    }
+                ]
             }
         };
     },
-    methods: {}
+    methods: {
+        search: function() {
+            this.$refs.dataTable.load();
+        },
+        add: function() {
+            this.$refs.dataTable.openModel(
+                "添加问题",
+                "/project/detail/issue/add?projectId=" +
+                    this.table.search.projectId
+            );
+        },
+        edit: function(issueId) {
+            this.$refs.dataTable.openModel(
+                "编辑问题",
+                "/project/detail/issue/edit?projectId=" +
+                    this.table.search.projectId +
+                    "&issueId=" +
+                    issueId
+            );
+        },
+        detail: function(issueId) {
+            this.$refs.dataTable.openModel(
+                "问题详情",
+                "/project/detail/issue/detail?issueId=" + issueId
+            );
+        }
+    }
 };
 </script>

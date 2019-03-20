@@ -12,13 +12,13 @@ namespace ProjectModule.Bll
 {
     public class FileBll
     {
-        private readonly IDataLayer<Folder> _folderDataLayer;
-        private readonly IDataLayer<File> _fileDataLayer;
+        private readonly ICacheDataLayer<Folder> _folderDataLayer;
+        private readonly ICacheDataLayer<File> _fileDataLayer;
 
-        public FileBll(IDataLayer<Folder> folderDataLayer, IDataLayer<File> docDataLayer)
+        public FileBll(ICacheDataLayer<Folder> folderDataLayer, ICacheDataLayer<File> fileDataLayer)
         {
             _folderDataLayer = folderDataLayer;
-            _fileDataLayer = docDataLayer;
+            _fileDataLayer = fileDataLayer;
         }
 
         #region file

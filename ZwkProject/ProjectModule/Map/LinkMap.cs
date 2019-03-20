@@ -22,6 +22,7 @@ namespace ProjectModule.Map
             builder.Property(p => p.Name).HasColumnName("name");
             builder.Property(p => p.Href).HasColumnName("href");
             builder.Property(p => p.Remark).HasColumnName("remark");
+            builder.Property(p => p.Type).HasColumnName("type");
         }
     }
 }

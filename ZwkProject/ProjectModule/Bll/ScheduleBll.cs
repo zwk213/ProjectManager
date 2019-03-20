@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using EFHelper.Interface;
 using EFHelper.Model;
-using JsonHelper;
+using Microsoft.EntityFrameworkCore;
 using ProjectModule.Model;
 
 namespace ProjectModule.Bll
@@ -29,6 +29,20 @@ namespace ProjectModule.Bll
             return await _scheduleDataLayer.SelectPageAsync(p => p.ProjectId == projectId, orderby, page, size);
         }
 
+        public async Task<List<SelectOption>> GetOptionsAsync(string projectId)
+        {
+            var temp = await _scheduleDataLayer.DbContext.Set<Schedule>()
+                .Where(p => p.ProjectId == projectId)
+                .OrderByDescending(p => p.CreateDate)
+                .Select(p =>
+                 new SelectOption()
+                 {
+                     Label = p.Name,
+                     Value = p.PrimaryKey,
+                 }).ToListAsync();
+            return temp;
+        }
+
         public async Task<Schedule> GetAsync(string primaryKey)
         {
             return await _scheduleDataLayer.SelectAsync(p => p.PrimaryKey == primaryKey);
@@ -37,7 +51,7 @@ namespace ProjectModule.Bll
         public async Task UpdateAsync(Schedule schedule)
         {
             var temp = await GetAsync(schedule.PrimaryKey);
-            if(temp==null)
+            if (temp == null)
                 throw new Exception("未发现该时间节点");
             temp.UpdateFrom(schedule);
             temp.Validate();
