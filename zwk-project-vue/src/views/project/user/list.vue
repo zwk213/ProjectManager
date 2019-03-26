@@ -3,37 +3,52 @@
         <ButtonGroup class="absolute" style="top:0;right:0">
             <Button class="bg-white" type="primary" ghost @click="add">添加</Button>
         </ButtonGroup>
-
-        <div v-for="(item,index) in users" :key="item.primaryKey">
-            <Row type="flex">
-                <div class="bg-white w-25 p-3 border rounded">
-                    <Row type="flex" justify="space-between" align="bottom" class="mb-3">
-                        <div>
-                            <span class="font-lg bold">姓名</span>
-                            <span class="bold font-sm ml-2">研发</span>
-                        </div>
-                        <Button size="small" shape="circle" icon="ios-settings"></Button>
-                    </Row>
-                    <div class="font-sm">
-                        <div>
-                            <span>手机</span>
-                            <span class="ml-2 mr-2 bold">:</span>
-                            <span>17602131591</span>
-                        </div>
-                        <div>
-                            <span>邮箱</span>
-                            <span class="ml-2 mr-2 bold">:</span>
-                            <span>1017782318@qq.com</span>
-                        </div>
-                        <Row type="flex" class="flex-nowrap">
-                            <span class="flex-shrink">备注</span>
-                            <span class="flex-shrink ml-2 mr-2 bold">:</span>
-                            <span>备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注</span>
+        <!-- 内容 -->
+        <div>
+            <!-- 分组数据 -->
+            <div v-for="(group,index) in users" :key="index">
+                <div class="bold mb-2">{{group[0].type}}</div>
+                <Row type="flex">
+                    <div
+                        v-for="(item,index) in group"
+                        :key="item.primaryKey"
+                        class="bg-white w-25 p-3 border rounded mr-3 mb-3"
+                    >
+                        <Row type="flex" justify="space-between" align="bottom" class="mb-3">
+                            <div>
+                                <span class="font-lg bold">{{item.userName}}</span>
+                                <span class="font-sm ml-3">{{item.post}}</span>
+                            </div>
+                            <!--编辑-->
+                            <Button
+                                size="small"
+                                shape="circle"
+                                icon="ios-settings"
+                                @click="edit(item.primaryKey)"
+                            ></Button>
                         </Row>
+                        <div class="font-sm">
+                            <div>
+                                <span>手机</span>
+                                <span class="ml-2 mr-2 bold">:</span>
+                                <span>{{item.phone}}</span>
+                            </div>
+                            <div>
+                                <span>邮箱</span>
+                                <span class="ml-2 mr-2 bold">:</span>
+                                <span>{{item.email}}</span>
+                            </div>
+                            <Row type="flex" class="flex-nowrap">
+                                <span class="flex-shrink">备注</span>
+                                <span class="flex-shrink ml-2 mr-2 bold">:</span>
+                                <span>{{item.remark}}</span>
+                            </Row>
+                        </div>
                     </div>
-                </div>
-            </Row>
+                </Row>
+            </div>
         </div>
+
         <!--弹窗modal-->
         <RouterModal ref="routerModal"></RouterModal>
     </div>
@@ -58,7 +73,17 @@ export default {
     methods: {
         getUserList: function() {
             this.$api.project.user.getList(this.search).then(rsp => {
-                this.users = rsp.data;
+                //整理数据，将返回值按type分组
+                var all = rsp.data;
+                var index = 0;
+                var temp = [[]];
+                for (let i = 0; i < all.length; i++) {
+                    if (i != 0 && all[i].type != all[i - 1].type) {
+                        temp[++index] = [];
+                    }
+                    temp[index].push(all[i]);
+                }
+                this.users = temp;
             });
         },
         add: function() {

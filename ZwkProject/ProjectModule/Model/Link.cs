@@ -11,13 +11,13 @@ namespace ProjectModule.Model
     {
         public string ProjectId { get; set; }
 
+        public string GroupId { get; set; }
+
         public string Name { get; set; }
 
         public string Href { get; set; }
 
         public string Remark { get; set; }
-
-        public LinkType Type { get; set; }
 
         public override void Validate()
         {
@@ -31,9 +31,10 @@ namespace ProjectModule.Model
         public void UpdateFrom(Link link)
         {
             base.UpdateFrom(link);
+            //ProjectId = link.ProjectId;
+            //GroupId = link.GroupId;
             Name = link.Name;
             Href = link.Href;
-            Type = link.Type;
             Remark = link.Remark;
         }
 

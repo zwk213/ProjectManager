@@ -12,6 +12,8 @@ namespace ProjectModule.Model
 
         public string ProjectId { get; set; }
 
+        public string GroupId { get; set; }
+
         /// <summary>
         /// 用户表中的编码
         /// </summary>
@@ -31,8 +33,6 @@ namespace ProjectModule.Model
         public string Company { get; set; }
 
         public string Remark { get; set; }
-
-        public UserType Type { get; set; }
 
         public UserStatus Status { get; set; }
 
@@ -55,6 +55,7 @@ namespace ProjectModule.Model
         {
             base.UpdateFrom(user);
             //ProjectId = user.ProjectId;
+            //GroupId = user.GroupId;
             //UserId = user.UserId;
             //UserName = user.UserName;
             Phone = user.Phone;
@@ -62,7 +63,6 @@ namespace ProjectModule.Model
             Post = user.Post;
             Company = user.Company;
             Remark = user.Remark;
-            Type = user.Type;
             Status = user.Status;
         }
 

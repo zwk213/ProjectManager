@@ -21,3 +21,9 @@
 .ivu-select-single .ivu-select-selection .ivu-select-placeholder {
     color: #999;
 }
+
+.ivu-select-disabled .ivu-select-selection,
+.ivu-input[disabled],
+fieldset[disabled] .ivu-input {
+    color: rgba(0, 0, 0, 0.85)
+}

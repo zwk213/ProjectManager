@@ -7,11 +7,11 @@ using ProjectModule.Model;
 
 namespace ProjectModule.Map
 {
-    public class LinkMap : IEntityTypeConfiguration<Link>
+    public class UserGroupMap : IEntityTypeConfiguration<UserGroup>
     {
-        public void Configure(EntityTypeBuilder<Link> builder)
+        public void Configure(EntityTypeBuilder<UserGroup> builder)
         {
-            builder.ToTable("p_link");
+            builder.ToTable("p_user_group");
             builder.Property(p => p.PrimaryKey).HasColumnName("primary_key");
             builder.Property(p => p.CreateDate).HasColumnName("create_date").HasColumnType("datetime");
             builder.Property(p => p.CreateBy).HasColumnName("create_by");
@@ -19,10 +19,7 @@ namespace ProjectModule.Map
             builder.Property(p => p.UpdateBy).HasColumnName("update_by");
 
             builder.Property(p => p.ProjectId).HasColumnName("project_id");
-            builder.Property(p => p.GroupId).HasColumnName("group_id");
             builder.Property(p => p.Name).HasColumnName("name");
-            builder.Property(p => p.Href).HasColumnName("href");
-            builder.Property(p => p.Remark).HasColumnName("remark");
         }
     }
 }

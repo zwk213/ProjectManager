@@ -17,12 +17,14 @@
             >
                 <p class="content">
                     <span class="bold">{{item.name}}</span>
+                    <!--编辑-->
                     <Button
-                        class="float-right"
                         size="small"
                         shape="circle"
+                        icon="ios-settings"
+                        class="float-right"
                         @click="editSchedule(item.primaryKey)"
-                    >编辑</Button>
+                    ></Button>
                 </p>
                 <p class="content">
                     <span>{{item.start}}</span>

@@ -289,6 +289,7 @@ namespace ZwkProject.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateUser(User user)
         {
+            user.Update(Request.RequestUser().UserId);
             await _userBll.UpdateAsync(user);
             //日志
             await _logBll.AddAsync(

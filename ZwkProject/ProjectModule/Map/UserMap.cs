@@ -19,6 +19,7 @@ namespace ProjectModule.Map
             builder.Property(p => p.UpdateBy).HasColumnName("update_by");
 
             builder.Property(p => p.ProjectId).HasColumnName("project_id");
+            builder.Property(p => p.GroupId).HasColumnName("group_id");
             builder.Property(p => p.UserId).HasColumnName("user_id");
             builder.Property(p => p.UserName).HasColumnName("user_name");
 
@@ -28,7 +29,6 @@ namespace ProjectModule.Map
             builder.Property(p => p.Company).HasColumnName("company");
             builder.Property(p => p.Remark).HasColumnName("remark");
 
-            builder.Property(p => p.Type).HasColumnName("type");
             builder.Property(p => p.Status).HasColumnName("status");
         }
     }
