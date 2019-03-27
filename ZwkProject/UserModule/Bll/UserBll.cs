@@ -33,6 +33,7 @@ namespace UserModule.Bll
 
         public async Task AddAsync(User user)
         {
+            user.Validate();
             await _userDataLayer.InsertAsync(user);
         }
 
@@ -64,7 +65,12 @@ namespace UserModule.Bll
 
         public async Task UpdateAsync(User user)
         {
-            await _userDataLayer.UpdateAsync(user);
+            var temp = await GetAsync(user.PrimaryKey);
+            if(temp==null)
+                throw new Exception("未发现该用户");
+            temp.UpdateFrom(user);
+            temp.Validate();
+            await _userDataLayer.UpdateAsync(temp);
         }
 
     }

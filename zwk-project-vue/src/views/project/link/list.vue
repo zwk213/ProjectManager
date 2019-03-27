@@ -1,7 +1,8 @@
 <template>
     <div class="relative">
         <ButtonGroup class="absolute" style="top:0;right:0">
-            <Button class="bg-white" type="primary" ghost @click="add">添加</Button>
+            <Button class="bg-white" type="primary" ghost @click="addLink">添加链接</Button>
+            <Button class="bg-white" type="primary" ghost @click="addGroup">添加组</Button>
         </ButtonGroup>
 
         <!-- 内容 -->
@@ -67,29 +68,26 @@ export default {
     },
     methods: {
         getLinkList: function() {
-            this.$api.project.link.getList(this.search).then(rsp => {
-                //整理数据，将返回值按type分组
-                var all = rsp.data;
-                var index = 0;
-                var temp = [[]];
-                for (let i = 0; i < all.length; i++) {
-                    if (i != 0 && all[i].type != all[i - 1].type) {
-                        temp[++index] = [];
-                    }
-                    temp[index].push(all[i]);
-                }
-                this.links = temp;
+            this.$api.project.linkGroup.getList(this.search).then(rsp => {
+                this.links = rsp.data;
             });
         },
-        add: function() {
+        addLink: function() {
             this.$refs.routerModal.openModel(
-                "添加地址",
+                "添加链接",
                 "/project/detail/link/add?projectId=" + this.search.projectId
+            );
+        },
+        addGroup: function() {
+            this.$refs.routerModal.openModel(
+                "添加组",
+                "/project/detail/link/addGroup?projectId=" +
+                    this.search.projectId
             );
         },
         edit: function(linkId) {
             this.$refs.routerModal.openModel(
-                "编辑地址",
+                "编辑链接",
                 "/project/detail/link/edit?linkId=" + linkId
             );
         }

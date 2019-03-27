@@ -12,6 +12,8 @@ namespace ProjectModule.Map
         public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.ToTable("p_user");
+            builder.HasKey(p => p.PrimaryKey);
+
             builder.Property(p => p.PrimaryKey).HasColumnName("primary_key");
             builder.Property(p => p.CreateDate).HasColumnName("create_date").HasColumnType("datetime");
             builder.Property(p => p.CreateBy).HasColumnName("create_by");
@@ -23,7 +25,6 @@ namespace ProjectModule.Map
             builder.Property(p => p.UserId).HasColumnName("user_id");
             builder.Property(p => p.UserName).HasColumnName("user_name");
 
-            builder.Property(p => p.Post).HasColumnName("post");
             builder.Property(p => p.Phone).HasColumnName("phone");
             builder.Property(p => p.Email).HasColumnName("email");
             builder.Property(p => p.Company).HasColumnName("company");

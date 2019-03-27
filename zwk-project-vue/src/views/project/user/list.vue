@@ -1,24 +1,23 @@
 <template>
     <div class="relative">
         <ButtonGroup class="absolute" style="top:0;right:0">
-            <Button class="bg-white" type="primary" ghost @click="add">添加</Button>
+            <Button class="bg-white" type="primary" ghost @click="addUser" icon="ios-person">添加参与人员</Button>
+            <Button class="bg-white" type="primary" ghost @click="addGroup" icon="ios-people">添加组</Button>
         </ButtonGroup>
+
         <!-- 内容 -->
-        <div>
+        <div class="pt-2">
             <!-- 分组数据 -->
-            <div v-for="(group,index) in users" :key="index">
-                <div class="bold mb-2">{{group[0].type}}</div>
+            <div v-for="(group,index) in userGroups" :key="group.primaryKey">
+                <div class="bold mb-2">{{group.name}}</div>
                 <Row type="flex">
                     <div
-                        v-for="(item,index) in group"
+                        v-for="(item,index) in group.users"
                         :key="item.primaryKey"
-                        class="bg-white w-25 p-3 border rounded mr-3 mb-3"
+                        class="bg-white w-20 p-3 border rounded mr-3 mb-3"
                     >
                         <Row type="flex" justify="space-between" align="bottom" class="mb-3">
-                            <div>
-                                <span class="font-lg bold">{{item.userName}}</span>
-                                <span class="font-sm ml-3">{{item.post}}</span>
-                            </div>
+                            <div class="bold">{{item.userName}}</div>
                             <!--编辑-->
                             <Button
                                 size="small"
@@ -64,7 +63,7 @@ export default {
             search: {
                 projectId: this.$route.query.projectId
             },
-            users: []
+            userGroups: []
         };
     },
     mounted: function() {
@@ -72,24 +71,21 @@ export default {
     },
     methods: {
         getUserList: function() {
-            this.$api.project.user.getList(this.search).then(rsp => {
-                //整理数据，将返回值按type分组
-                var all = rsp.data;
-                var index = 0;
-                var temp = [[]];
-                for (let i = 0; i < all.length; i++) {
-                    if (i != 0 && all[i].type != all[i - 1].type) {
-                        temp[++index] = [];
-                    }
-                    temp[index].push(all[i]);
-                }
-                this.users = temp;
+            this.$api.project.userGroup.getList(this.search).then(rsp => {
+                this.userGroups = rsp.data;
             });
         },
-        add: function() {
+        addUser: function() {
             this.$refs.routerModal.openModel(
-                "添加用户",
+                "添加参与人员",
                 "/project/detail/user/add?projectId=" + this.search.projectId
+            );
+        },
+        addGroup: function() {
+            this.$refs.routerModal.openModel(
+                "添加组",
+                "/project/detail/user/addGroup?projectId=" +
+                    this.search.projectId
             );
         },
         edit: function(userId) {

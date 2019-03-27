@@ -72,18 +72,18 @@ export default {
     },
     methods: {
         submit: function() {
-            debugger;
-            var form = {};
-            for (let i = 0; i < this.dataForm.items.length; i++) {
-                var temp = this.dataForm.items[i];
-                //时间格式化，否则后台接收有问题
-                form[temp.field] =
-                    temp.value instanceof Date
-                        ? temp.value.format()
-                        : temp.value;
-            }
             this.$refs["data-form"].validate(valid => {
                 if (valid) {
+                    //先验证，后处理时间
+                    var form = {};
+                    for (let i = 0; i < this.dataForm.items.length; i++) {
+                        var temp = this.dataForm.items[i];
+                        //时间格式化，否则后台接收有问题
+                        form[temp.field] =
+                            temp.value instanceof Date
+                                ? temp.value.format()
+                                : temp.value;
+                    }
                     this.$api.post(this.submitUrl, form).then(rsp => {
                         alert("提交成功");
                     });

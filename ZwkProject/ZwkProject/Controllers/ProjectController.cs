@@ -270,7 +270,13 @@ namespace ZwkProject.Controllers
         {
             var temp = await _userModuleUserBll.GetAsync(user.UserId);
             if (temp != null)
+            {
+                //从用户表中赋值
                 user.UserName = temp.UserName;
+                user.Phone = temp.Phone;
+                user.Email = temp.Email;
+                user.Company = temp.Company;
+            }
             else
                 return new JsonResult(new { success = false, message = "用户不存在" });
             user.Create(Request.RequestUser().UserId);
@@ -309,19 +315,143 @@ namespace ZwkProject.Controllers
             return new JsonResult(new { success = true, data = result });
         }
 
-        [Route("/api/project/user/getList")]
-        [HttpGet]
-        public async Task<IActionResult> GetUserList(string projectId)
-        {
-            PageData<User> result = await _userBll.GetListAsync(projectId, "Type", 1, 1000);
-            return new JsonResult(new { success = true, data = result.Data });
-        }
-
         [Route("/api/project/user/getOptions")]
         [HttpGet]
         public async Task<IActionResult> GetUserOptions(string projectId)
         {
             var result = await _userBll.GetOptionsAsync(projectId);
+            return new JsonResult(new { success = true, data = result });
+        }
+
+        #endregion
+
+        #region UserGroup
+
+        [Route("/api/project/userGroup/add")]
+        [HttpPost]
+        public async Task<IActionResult> AddUserGroup(UserGroup group)
+        {
+            group.Create(Request.RequestUser().UserId);
+            await _userBll.AddGroupAsync(group);
+            //日志
+            await _logBll.AddAsync(
+                Request.RequestUser().UserId,
+                Request.RequestUser().UserName + "添加了项目用户组：" + group.Name,
+                Json.Serialize(group),
+                group.ProjectId
+            );
+            return new JsonResult(new { success = true });
+        }
+
+        [Route("/api/project/userGroup/getList")]
+        [HttpGet]
+        public async Task<IActionResult> GetUserGroupList(string projectId)
+        {
+            PageData<UserGroup> result = await _userBll.GetGroupListAsync(projectId, "CreateDate Desc", 1, 1000);
+            return new JsonResult(new { success = true, data = result.Data });
+        }
+
+        [Route("/api/project/userGroup/getOptions")]
+        [HttpGet]
+        public async Task<IActionResult> GetUserGroupOptions(string projectId)
+        {
+            var result = await _userBll.GetGroupOptionsAsync(projectId);
+            return new JsonResult(new { success = true, data = result });
+        }
+
+        #endregion
+
+        #region link
+
+        [Route("/api/project/link/add")]
+        [HttpPost]
+        public async Task<IActionResult> AddLink(Link link)
+        {
+            link.Create(Request.RequestUser().UserId);
+            await _linkBll.AddAsync(link);
+            //日志
+            await _logBll.AddAsync(
+                Request.RequestUser().UserId,
+                Request.RequestUser().UserName + "添加了项目地址：" + link.Name,
+                Json.Serialize(link),
+                link.ProjectId
+            );
+            return new JsonResult(new { success = true });
+        }
+
+        [Route("/api/project/link/update")]
+        [HttpPost]
+        public async Task<IActionResult> UpdateLink(Link link)
+        {
+            link.Update(Request.RequestUser().UserId);
+            await _linkBll.UpdateAsync(link);
+            //日志
+            await _logBll.AddAsync(
+                Request.RequestUser().UserId,
+                Request.RequestUser().UserName + "更新了项目地址：" + link.Name,
+                Json.Serialize(link),
+                link.ProjectId
+            );
+            return new JsonResult(new { success = true });
+        }
+
+        [Route("/api/project/link/delete")]
+        [HttpPost]
+        public async Task<IActionResult> DeleteLink(DeleteLinkReq req)
+        {
+            var link = await _linkBll.GetAsync(req.LinkId);
+            await _linkBll.DeleteAsync(req.LinkId);
+            //日志
+            await _logBll.AddAsync(
+                Request.RequestUser().UserId,
+                Request.RequestUser().UserName + "删除了项目地址：" + link.Name,
+                Json.Serialize(link),
+                link.ProjectId
+            );
+            return new JsonResult(new { success = true });
+        }
+
+        [Route("/api/project/link/get")]
+        [HttpGet]
+        public async Task<IActionResult> GetLink(string linkId)
+        {
+            Link result = await _linkBll.GetAsync(linkId);
+            return new JsonResult(new { success = true, data = result });
+        }
+
+        #endregion
+
+        #region LinkGroup
+
+        [Route("/api/project/linkGroup/add")]
+        [HttpPost]
+        public async Task<IActionResult> AddLinkGroup(LinkGroup group)
+        {
+            group.Create(Request.RequestUser().UserId);
+            await _linkBll.AddGroupAsync(group);
+            //日志
+            await _logBll.AddAsync(
+                Request.RequestUser().UserId,
+                Request.RequestUser().UserName + "添加了项目用户组：" + group.Name,
+                Json.Serialize(group),
+                group.ProjectId
+            );
+            return new JsonResult(new { success = true });
+        }
+
+        [Route("/api/project/linkGroup/getList")]
+        [HttpGet]
+        public async Task<IActionResult> GetLinkGroupList(string projectId)
+        {
+            PageData<LinkGroup> result = await _linkBll.GetGroupListAsync(projectId, "CreateDate Desc", 1, 1000);
+            return new JsonResult(new { success = true, data = result.Data });
+        }
+
+        [Route("/api/project/linkGroup/getOptions")]
+        [HttpGet]
+        public async Task<IActionResult> GetLinkGroupOptions(string projectId)
+        {
+            var result = await _linkBll.GetGroupOptionsAsync(projectId);
             return new JsonResult(new { success = true, data = result });
         }
 
@@ -431,73 +561,7 @@ namespace ZwkProject.Controllers
 
         #endregion
 
-        #region link
-
-        [Route("/api/project/link/add")]
-        [HttpPost]
-        public async Task<IActionResult> AddLink(Link link)
-        {
-            link.Create(Request.RequestUser().UserId);
-            await _linkBll.AddAsync(link);
-            //日志
-            await _logBll.AddAsync(
-                Request.RequestUser().UserId,
-                Request.RequestUser().UserName + "添加了项目地址：" + link.Name,
-                Json.Serialize(link),
-                link.ProjectId
-            );
-            return new JsonResult(new { success = true });
-        }
-
-        [Route("/api/project/link/update")]
-        [HttpPost]
-        public async Task<IActionResult> UpdateLink(Link link)
-        {
-            link.Update(Request.RequestUser().UserId);
-            await _linkBll.UpdateAsync(link);
-            //日志
-            await _logBll.AddAsync(
-                Request.RequestUser().UserId,
-                Request.RequestUser().UserName + "更新了项目地址：" + link.Name,
-                Json.Serialize(link),
-                link.ProjectId
-            );
-            return new JsonResult(new { success = true });
-        }
-
-        [Route("/api/project/link/delete")]
-        [HttpPost]
-        public async Task<IActionResult> DeleteLink(DeleteLinkReq req)
-        {
-            var link = await _linkBll.GetAsync(req.LinkId);
-            await _linkBll.DeleteAsync(req.LinkId);
-            //日志
-            await _logBll.AddAsync(
-                Request.RequestUser().UserId,
-                Request.RequestUser().UserName + "删除了项目地址：" + link.Name,
-                Json.Serialize(link),
-                link.ProjectId
-            );
-            return new JsonResult(new { success = true });
-        }
-
-        [Route("/api/project/link/get")]
-        [HttpGet]
-        public async Task<IActionResult> GetLink(string linkId)
-        {
-            Link result = await _linkBll.GetAsync(linkId);
-            return new JsonResult(new { success = true, data = result });
-        }
-
-        [Route("/api/project/link/getList")]
-        [HttpGet]
-        public async Task<IActionResult> GetLinkList(string projectId)
-        {
-            PageData<Link> result = await _linkBll.GetListAsync(projectId, "CreateDate Desc", 1, 1000);
-            return new JsonResult(new { success = true, data = result.Data });
-        }
-
-        #endregion
+        
 
     }
 }

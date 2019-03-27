@@ -6,7 +6,9 @@ Vue.use(Router)
 export default new Router({
     mode: 'history',
     base: process.env.BASE_URL,
-    routes: [{
+    routes: [
+        //主界面
+        {
             path: '/',
             name: "后台管理",
             component: () => import('@/views/layout/layout'),
@@ -42,6 +44,7 @@ export default new Router({
                         component: () => import('@/views/user/user/detail.vue')
                     }]
                 },
+                //项目
                 {
                     path: "project",
                     name: "项目管理",
@@ -117,6 +120,10 @@ export default new Router({
                                     path: "edit",
                                     name: "编辑参与人员",
                                     component: () => import('@/views/project/user/edit.vue')
+                                }, {
+                                    path: "addGroup",
+                                    name: "添加组",
+                                    component: () => import('@/views/project/user/addGroup.vue')
                                 }]
                             }, {
                                 path: "link",
@@ -130,7 +137,11 @@ export default new Router({
                                     path: "edit",
                                     name: "编辑地址",
                                     component: () => import('@/views/project/link/edit.vue')
-                                }]
+                                }, {
+                                    path: "addGroup",
+                                    name: "添加组",
+                                    component: () => import('@/views/project/link/addGroup.vue')
+                                }, ]
                             }, {
                                 path: "file",
                                 name: "文件",
@@ -141,6 +152,7 @@ export default new Router({
                 }
             ]
         },
+        //登录
         {
             path: "/login",
             name: "登录",

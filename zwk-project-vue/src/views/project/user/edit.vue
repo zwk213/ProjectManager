@@ -58,58 +58,6 @@ export default {
                     ]
                 },
                 {
-                    type: "input",
-                    field: "phone",
-                    label: "手机号",
-                    value: "",
-                    rules: [
-                        {
-                            required: true,
-                            message: "手机号不能为空",
-                            trigger: "blur"
-                        }
-                    ]
-                },
-                {
-                    type: "input",
-                    field: "email",
-                    label: "邮箱",
-                    value: "",
-                    rules: [
-                        {
-                            required: true,
-                            message: "邮箱不能为空",
-                            trigger: "blur"
-                        }
-                    ]
-                },
-                {
-                    type: "input",
-                    field: "post",
-                    label: "职位",
-                    value: "",
-                    rules: [
-                        {
-                            required: true,
-                            message: "职位不能为空",
-                            trigger: "blur"
-                        }
-                    ]
-                },
-                {
-                    type: "input",
-                    field: "company",
-                    label: "公司",
-                    value: "",
-                    rules: [
-                        {
-                            required: true,
-                            message: "公司不能为空",
-                            trigger: "blur"
-                        }
-                    ]
-                },
-                {
                     type: "textarea",
                     field: "remark",
                     label: "备注",

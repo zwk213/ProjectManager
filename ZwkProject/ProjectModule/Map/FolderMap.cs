@@ -12,6 +12,8 @@ namespace ProjectModule.Map
         public void Configure(EntityTypeBuilder<Folder> builder)
         {
             builder.ToTable("p_folder");
+            builder.HasKey(p => p.PrimaryKey);
+
             builder.Property(p => p.PrimaryKey).HasColumnName("primary_key");
             builder.Property(p => p.CreateDate).HasColumnName("create_date").HasColumnType("datetime");
             builder.Property(p => p.CreateBy).HasColumnName("create_by");

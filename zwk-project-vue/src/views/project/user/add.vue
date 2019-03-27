@@ -9,6 +9,9 @@ export default {
     components: { DataForm },
     data: function() {
         return {
+            search: {
+                projectId: this.$route.query.projectId
+            },
             submitUrl: this.$api.project.user.url.add,
             model: [
                 {
@@ -40,64 +43,13 @@ export default {
                 },
                 {
                     type: "select",
-                    field: "type",
-                    label: "类型",
-                    options: [
-                        { label: "内部用户", value: "0" },
-                        { label: "外部用户", value: "1" }
-                    ],
+                    field: "groupId",
+                    label: "用户组",
+                    options: [],
                     rules: [
                         {
                             required: true,
-                            message: "类型不能为空",
-                            trigger: "blur"
-                        }
-                    ]
-                },
-                {
-                    type: "input",
-                    field: "phone",
-                    label: "手机号",
-                    rules: [
-                        {
-                            required: true,
-                            message: "手机号不能为空",
-                            trigger: "blur"
-                        }
-                    ]
-                },
-                {
-                    type: "input",
-                    field: "email",
-                    label: "邮箱",
-                    rules: [
-                        {
-                            required: true,
-                            message: "邮箱不能为空",
-                            trigger: "blur"
-                        }
-                    ]
-                },
-                {
-                    type: "input",
-                    field: "post",
-                    label: "职位",
-                    rules: [
-                        {
-                            required: true,
-                            message: "职位不能为空",
-                            trigger: "blur"
-                        }
-                    ]
-                },
-                {
-                    type: "input",
-                    field: "company",
-                    label: "公司",
-                    rules: [
-                        {
-                            required: true,
-                            message: "公司不能为空",
+                            message: "用户组不能为空",
                             trigger: "blur"
                         }
                     ]
@@ -108,11 +60,17 @@ export default {
     },
     mounted: function() {
         this.getUserOptions();
+        this.getGroupOptions();
     },
     methods: {
         getUserOptions: function() {
             this.$api.user.getOptions().then(rsp => {
                 this.model[1].options = rsp.data;
+            });
+        },
+        getGroupOptions: function() {
+            this.$api.project.userGroup.getOptions(this.search).then(rsp => {
+                this.model[2].options = rsp.data;
             });
         }
     }

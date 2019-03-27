@@ -26,6 +26,8 @@ namespace ProjectModule.Bll
         {
             user.Validate();
             await _userDataLayer.InsertAsync(user);
+            //移除用户所属组的缓存，等下次获取再更新
+            await _userGroupDataLayer.CacheService.RemoveAsync(user.GroupId);
         }
 
         public async Task<User> GetAsync(string key)
@@ -60,6 +62,8 @@ namespace ProjectModule.Bll
             temp.UpdateFrom(user);
             temp.Validate();
             await _userDataLayer.UpdateAsync(temp);
+            //移除用户所属组的缓存，等下次获取再更新
+            await _userGroupDataLayer.CacheService.RemoveAsync(user.GroupId);
         }
 
         #endregion

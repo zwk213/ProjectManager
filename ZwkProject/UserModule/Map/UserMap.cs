@@ -19,6 +19,7 @@ namespace UserModule.Map
             builder.Property(p => p.Password).HasColumnName("password");
             builder.Property(p => p.Phone).HasColumnName("phone");
             builder.Property(p => p.Email).HasColumnName("email");
+            builder.Property(p => p.Company).HasColumnName("company");
             builder.Property(p => p.HeadImage).HasColumnName("head_image");
 
             builder.Property(p => p.Type).HasColumnName("type");

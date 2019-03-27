@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using EFHelper.Model;
 using ValidateHelper;
 
@@ -12,6 +11,7 @@ namespace ProjectModule.Model
 
         public string Name { get; set; }
 
+        [ForeignKey("GroupId")]
         public virtual List<User> Users { get; set; }
 
         public override void Validate()

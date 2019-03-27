@@ -23,6 +23,7 @@ namespace ProjectModule.Model
         {
             base.Validate();
             ProjectId.HasValue("项目编码不能为空").MaxLength(50, "项目编码限制长度50");
+            GroupId.HasValue("链接组不能为空").MaxLength(200, "链接组限制长度50");
             Name.HasValue("链接名称不能为空").MaxLength(50, "链接名称限制长度50");
             Href.HasValue("链接地址不能为空").MaxLength(200, "链接地址限制长度200");
             //Remark.HasValue("").MaxLength(50, "");
