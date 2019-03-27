@@ -33,7 +33,7 @@ instance.interceptors.response.use(
         if (data.success) {
             return data;
         } else {
-            alert(data.message);
+            this.$Message.error(data.message);
             return;
         }
     },

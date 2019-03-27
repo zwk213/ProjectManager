@@ -8,11 +8,11 @@
         <!-- 内容 -->
         <div>
             <!-- 分组数据 -->
-            <div v-for="(group,index) in links" :key="index">
-                <div class="bold mb-2">{{group[0].type}}</div>
+            <div v-for="(group,index) in linkGroups" :key="index">
+                <div class="bold mb-2">{{group.name}}</div>
                 <Row type="flex">
                     <div
-                        v-for="(item,index) in group"
+                        v-for="(item,index) in group.links"
                         :key="item.primaryKey"
                         class="bg-white w-25 p-3 border rounded mr-3 mb-3"
                     >
@@ -60,7 +60,7 @@ export default {
             search: {
                 projectId: this.$route.query.projectId
             },
-            links: []
+            linkGroups: []
         };
     },
     mounted: function() {
@@ -69,7 +69,7 @@ export default {
     methods: {
         getLinkList: function() {
             this.$api.project.linkGroup.getList(this.search).then(rsp => {
-                this.links = rsp.data;
+                this.linkGroups = rsp.data;
             });
         },
         addLink: function() {
@@ -88,7 +88,10 @@ export default {
         edit: function(linkId) {
             this.$refs.routerModal.openModel(
                 "编辑链接",
-                "/project/detail/link/edit?linkId=" + linkId
+                "/project/detail/link/edit?linkId=" +
+                    linkId +
+                    "&projectId=" +
+                    this.search.projectId
             );
         }
     }

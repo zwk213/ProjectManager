@@ -50,7 +50,8 @@ export default {
                         {
                             required: true,
                             message: "开始时间不能为空",
-                            trigger: "blur"
+                            trigger: "blur",
+                            pattern: /.+/
                         }
                     ]
                 },

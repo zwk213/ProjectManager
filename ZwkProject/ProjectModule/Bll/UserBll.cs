@@ -63,7 +63,7 @@ namespace ProjectModule.Bll
             temp.Validate();
             await _userDataLayer.UpdateAsync(temp);
             //移除用户所属组的缓存，等下次获取再更新
-            await _userGroupDataLayer.CacheService.RemoveAsync(user.GroupId);
+            await _userGroupDataLayer.CacheService.RemoveAsync(temp.GroupId);
         }
 
         #endregion

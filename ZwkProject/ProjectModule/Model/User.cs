@@ -46,11 +46,7 @@ namespace ProjectModule.Model
         public void UpdateFrom(User user)
         {
             base.UpdateFrom(user);
-            Phone = user.Phone;
-            Email = user.Email;
-            Company = user.Company;
             Remark = user.Remark;
-            Status = user.Status;
         }
 
 

@@ -51,7 +51,9 @@ export default {
                 //更新model的数据
                 for (let i = 0; i < this.model.length; i++) {
                     var temp = this.model[i];
-                    temp.value = rsp.data[temp.field];
+                    temp.value = !rsp.data[temp.field]
+                        ? ""
+                        : rsp.data[temp.field].toString();
                 }
             });
         }

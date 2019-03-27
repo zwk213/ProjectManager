@@ -26,6 +26,7 @@ namespace ProjectModule.Bll
         public async Task AddAsync(Link link)
         {
             await _linkDataLayer.InsertAsync(link);
+            await _linkDataLayer.CacheService.RemoveAsync(link.GroupId);
         }
 
         public async Task<Link> GetAsync(string key)
@@ -46,11 +47,16 @@ namespace ProjectModule.Bll
             temp.UpdateFrom(link);
             temp.Validate();
             await _linkDataLayer.UpdateAsync(temp);
+            await _linkDataLayer.CacheService.RemoveAsync(temp.GroupId);
         }
 
         public async Task DeleteAsync(string key)
         {
+            var temp = await GetAsync(key);
+            if (temp == null)
+                throw new Exception("未发现该链接");
             await _linkDataLayer.DeleteAsync(p => p.PrimaryKey == key);
+            await _linkDataLayer.CacheService.RemoveAsync(temp.GroupId);
         }
 
         #endregion
@@ -98,11 +104,6 @@ namespace ProjectModule.Bll
         }
 
         #endregion
-
-
-
-
-
 
     }
 }

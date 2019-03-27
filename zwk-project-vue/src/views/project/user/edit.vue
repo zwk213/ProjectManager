@@ -41,23 +41,6 @@ export default {
                     ]
                 },
                 {
-                    type: "select",
-                    field: "type",
-                    label: "类型",
-                    value: "",
-                    options: [
-                        { label: "内部用户", value: "0" },
-                        { label: "外部用户", value: "1" }
-                    ],
-                    rules: [
-                        {
-                            required: true,
-                            message: "类型不能为空",
-                            trigger: "blur"
-                        }
-                    ]
-                },
-                {
                     type: "textarea",
                     field: "remark",
                     label: "备注",
@@ -79,7 +62,9 @@ export default {
                 //更新model的数据
                 for (let i = 0; i < this.model.length; i++) {
                     let temp = this.model[i];
-                    temp.value = rsp.data[temp.field].toString();
+                    temp.value = !rsp.data[temp.field]
+                        ? ""
+                        : rsp.data[temp.field].toString();
                 }
             });
         },

@@ -24,7 +24,7 @@ namespace ProjectModule.Model
         {
             base.Validate();
             Name.HasValue("节点名称必填").MaxLength(50, "节点名称限制长度50");
-            Remark.HasValue("节点内容必填").MaxLength(50, "节点内容限制长度50");
+            Remark.HasValue("节点内容必填").MaxLength(2000, "节点内容限制长度2000");
         }
 
         public void UpdateFrom(Schedule model)

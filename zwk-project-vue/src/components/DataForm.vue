@@ -85,7 +85,7 @@ export default {
                                 : temp.value;
                     }
                     this.$api.post(this.submitUrl, form).then(rsp => {
-                        alert("提交成功");
+                        this.$Message.success("提交成功");
                     });
                 }
             });
