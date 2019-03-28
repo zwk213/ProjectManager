@@ -18,7 +18,7 @@ export default {
                     type: "input",
                     field: "projectId",
                     label: "项目编码",
-                    hiddle: true,
+                    hide: true,
                     value: this.$route.query.projectId,
                     rules: [
                         {

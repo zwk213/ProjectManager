@@ -19,25 +19,13 @@ export default {
                     field: "projectId",
                     label: "项目编码",
                     value: this.$route.query.projectId,
-                    hiddle: true
+                    hide: true
                 },
-                {
-                    type: "input",
-                    field: "summary",
-                    label: "摘要",
-                    rules: [
-                        {
-                            required: true,
-                            message: "摘要不能为空",
-                            trigger: "blur"
-                        }
-                    ]
-                },
-                { type: "textarea", field: "detail", label: "详情" },
                 {
                     type: "select",
                     field: "scheduleId",
                     label: "时间节点",
+                    half: true,
                     options: [],
                     rules: [
                         {
@@ -51,6 +39,7 @@ export default {
                     type: "select",
                     field: "principalId",
                     label: "负责人",
+                    half: true,
                     options: [],
                     rules: [
                         {
@@ -64,6 +53,7 @@ export default {
                     type: "select",
                     field: "priority",
                     label: "优先级",
+                    half: true,
                     options: [
                         { label: "正常", value: 1 },
                         { label: "低", value: 0 },
@@ -76,7 +66,20 @@ export default {
                             trigger: "blur"
                         }
                     ]
-                }
+                },
+                {
+                    type: "input",
+                    field: "summary",
+                    label: "摘要",
+                    rules: [
+                        {
+                            required: true,
+                            message: "摘要不能为空",
+                            trigger: "blur"
+                        }
+                    ]
+                },
+                { type: "html", field: "detail", label: "详情" }
             ]
         };
     },

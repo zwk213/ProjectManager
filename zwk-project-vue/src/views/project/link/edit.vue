@@ -19,14 +19,14 @@ export default {
                     type: "input",
                     field: "primaryKey",
                     label: "链接编码",
-                    hiddle: true,
+                    hide: true,
                     value: ""
                 },
                 {
                     type: "input",
                     field: "projectId",
                     label: "项目编码",
-                    hiddle: true,
+                    hide: true,
                     value: ""
                 },
                 {

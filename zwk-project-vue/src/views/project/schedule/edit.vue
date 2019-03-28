@@ -18,7 +18,7 @@ export default {
                     type: "input",
                     field: "primaryKey",
                     label: "截止时间",
-                    hiddle: true,
+                    hide: true,
                     value: this.$route.query.scheduleId
                 },
                 { type: "input", field: "name", label: "节点名称", value: "" },

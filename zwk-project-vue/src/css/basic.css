@@ -630,11 +630,11 @@ pre {
 }
 
 /* 隐藏 */
-.hiddle {
-    display: none
+.hide {
+    display: none !important
 }
 
 /* 不可见 */
 .invisible {
-    visibility: hidden;
+    visibility: hidden !important
 }

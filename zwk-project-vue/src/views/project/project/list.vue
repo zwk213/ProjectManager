@@ -15,6 +15,7 @@
             :columns="table.columns"
             :apiUrl="table.apiUrl"
             :search="table.search"
+            width="500"
         ></DataTable>
     </Row>
 </template>

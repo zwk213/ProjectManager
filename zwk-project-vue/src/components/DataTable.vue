@@ -23,18 +23,23 @@
             @on-page-size-change="sizeChange"
         />
 
-        <RouterModel ref="routerModal"></RouterModel>
+        <RouterDrawer ref="routerDrawer" :width="width"></RouterDrawer>
     </Row>
 </template>
 
 <script>
 import helper from "@/utils/helper.js";
 import RouterModel from "@/components/RouterModal.vue";
+import RouterDrawer from "@/components/RouterDrawer.vue";
 
 export default {
     name: "NormalTable",
-    components: { RouterModel },
+    components: { RouterModel, RouterDrawer },
     props: {
+        width: {
+            type: Number,
+            default: 720
+        },
         columns: {
             type: Array,
             default() {
@@ -95,7 +100,7 @@ export default {
         },
         //模态框
         openModel: function(title, path) {
-            this.$refs.routerModal.openModel(title, path);
+            this.$refs.routerDrawer.open(title, path);
         }
     }
 };

@@ -1,12 +1,13 @@
 <template>
-    <Form ref="data-form" :model="dataForm" label-position="right" :label-width="100">
+    <Form ref="data-form" :model="dataForm" label-position="right" :label-width="90" inline>
         <FormItem
             v-for="(item, index) in dataForm.items"
             :key="index"
             :label="item.label"
             :prop="'items.' + index + '.value'"
             :rules="item.rules"
-            v-bind:class="{'hiddle':item.hiddle}"
+            class="mr-0 w-full"
+            v-bind:class="{'hide':item.hide,'w-half':item.half}"
         >
             <!--输入框-->
             <template v-if="item.type=='input'">
@@ -32,8 +33,17 @@
                 </Select>
             </template>
             <!--时间选择器-->
-            <template v-if="item.type=='datepicker'" :disabled="item.disabled">
-                <DatePicker type="date" v-model="item.value" value="yyyy-MM-dd"></DatePicker>
+            <template v-if="item.type=='datepicker'">
+                <DatePicker
+                    type="date"
+                    v-model="item.value"
+                    value="yyyy-MM-dd"
+                    :disabled="item.disabled"
+                ></DatePicker>
+            </template>
+            <!-- 富文本编辑器 -->
+            <template v-if="item.type=='html'">
+                <QuillEditer :html="item.value"></QuillEditer>
             </template>
         </FormItem>
         <FormItem>
@@ -53,8 +63,11 @@
 //     options: "select类型的枚举值",
 //     rules: [] //验证相关
 // };
+import QuillEditer from "@/components/QuillEditer";
+
 export default {
     name: "DataForm",
+    components: { QuillEditer },
     props: {
         model: {
             type: Array

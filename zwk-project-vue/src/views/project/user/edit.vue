@@ -15,14 +15,14 @@ export default {
                     type: "input",
                     field: "primaryKey",
                     label: "用户编码",
-                    hiddle: true,
+                    hide: true,
                     value: ""
                 },
                 {
                     type: "input",
                     field: "projectId",
                     label: "项目编码",
-                    hiddle: true,
+                    hide: true,
                     value: this.$route.query.projectId
                 },
                 {

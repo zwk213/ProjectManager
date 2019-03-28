@@ -27,3 +27,13 @@
 fieldset[disabled] .ivu-input {
     color: rgba(0, 0, 0, 0.85)
 }
+
+.ql-snow .ql-tooltip {
+    left: auto !important;
+    top: 9px !important;
+    right: -1px !important;
+}
+
+.ql-editor {
+    height: 200px !important;
+}
