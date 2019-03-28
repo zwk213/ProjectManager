@@ -1,7 +1,7 @@
 <template>
     <div class="ql-container bg-white">
         <quill-editor
-            v-model="content"
+            v-model="value"
             ref="myQuillEditor"
             :options="quillOption"
             @blur="onEditorBlur($event)"
@@ -23,22 +23,27 @@ export default {
         quillEditor
     },
     props: {
-        html: {
+        value: {
             type: String
         }
     },
     data() {
         return {
-            content: this.html,
             quillOption: {} //quillConfig
         };
     },
     mounted: function() {},
     methods: {
-        onEditorReady(editor) {}, // 准备编辑器
-        onEditorBlur() {}, // 失去焦点事件
-        onEditorFocus() {}, // 获得焦点事件
-        onEditorChange() {} // 内容改变事件
+        // 准备编辑器
+        onEditorReady(editor) {},
+        // 失去焦点事件
+        onEditorBlur() {},
+        // 获得焦点事件
+        onEditorFocus() {},
+        // 内容改变事件
+        onEditorChange() {
+            this.$emit("input", this.value);
+        }
     },
     computed: {
         editor() {

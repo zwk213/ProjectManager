@@ -43,7 +43,7 @@
             </template>
             <!-- 富文本编辑器 -->
             <template v-if="item.type=='html'">
-                <QuillEditer :html="item.value"></QuillEditer>
+                <QuillEditer v-model="item.value"></QuillEditer>
             </template>
         </FormItem>
         <FormItem>

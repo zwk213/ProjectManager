@@ -37,3 +37,8 @@ fieldset[disabled] .ivu-input {
 .ql-editor {
     height: 200px !important;
 }
+
+.ivu-table-cell {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+}

@@ -38,7 +38,7 @@ export default {
     props: {
         width: {
             type: Number,
-            default: 720
+            default: 800
         },
         columns: {
             type: Array,
@@ -98,8 +98,7 @@ export default {
             this.params.size = size;
             this.load();
         },
-        //模态框
-        openModel: function(title, path) {
+        open: function(title, path) {
             this.$refs.routerDrawer.open(title, path);
         }
     }

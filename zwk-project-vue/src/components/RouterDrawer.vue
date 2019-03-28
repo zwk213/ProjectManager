@@ -12,7 +12,7 @@ export default {
     props: {
         width: {
             type: Number,
-            default: 720
+            default: 800
         }
     },
     data: function() {

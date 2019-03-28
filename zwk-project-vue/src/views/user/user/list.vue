@@ -15,6 +15,7 @@
             :columns="table.columns"
             :apiUrl="table.apiUrl"
             :search="table.search"
+            :width="500"
         ></DataTable>
     </Row>
 </template>
@@ -91,10 +92,10 @@ export default {
             this.$refs.dataTable.load();
         },
         addUser: function() {
-            this.$refs.dataTable.openModel("添加用户", "/user/list/add");
+            this.$refs.dataTable.open("添加用户", "/user/list/add");
         },
         editUser: function(userId) {
-            this.$refs.dataTable.openModel(
+            this.$refs.dataTable.open(
                 "编辑用户",
                 "/user/list/edit?userId=" + userId
             );

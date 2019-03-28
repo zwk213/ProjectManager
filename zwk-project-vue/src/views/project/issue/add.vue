@@ -55,9 +55,9 @@ export default {
                     label: "优先级",
                     half: true,
                     options: [
-                        { label: "正常", value: 1 },
-                        { label: "低", value: 0 },
-                        { label: "高", value: 2 }
+                        { label: "正常", value: "1" },
+                        { label: "低", value: "0" },
+                        { label: "高", value: "2" }
                     ],
                     rules: [
                         {
@@ -90,12 +90,12 @@ export default {
     methods: {
         getScheduleOptions: function() {
             this.$api.project.schedule.getOptions(this.search).then(rsp => {
-                this.model[3].options = rsp.data;
+                this.model[1].options = rsp.data;
             });
         },
         getUserOptions: function() {
             this.$api.project.user.getOptions(this.search).then(rsp => {
-                this.model[4].options = rsp.data;
+                this.model[2].options = rsp.data;
             });
         }
     }

@@ -15,7 +15,7 @@
             :columns="table.columns"
             :apiUrl="table.apiUrl"
             :search="table.search"
-            width="500"
+            :width="500"
         ></DataTable>
     </Row>
 </template>
@@ -90,10 +90,10 @@ export default {
             this.$refs.dataTable.load();
         },
         add: function() {
-            this.$refs.dataTable.openModel("添加项目", "/project/list/add");
+            this.$refs.dataTable.open("添加项目", "/project/list/add");
         },
         edit: function(userId) {
-            this.$refs.dataTable.openModel(
+            this.$refs.dataTable.open(
                 "编辑项目",
                 "/project/list/edit?projectId=" + userId
             );

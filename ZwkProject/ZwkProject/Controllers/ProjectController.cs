@@ -254,9 +254,9 @@ namespace ZwkProject.Controllers
 
         [Route("/api/project/issue/getPage")]
         [HttpGet]
-        public async Task<IActionResult> GetIssuePage(string projectId, string scheduleId, int page, int size)
+        public async Task<IActionResult> GetIssuePage(string projectId, string scheduleId,string principalId, int page, int size)
         {
-            PageData<Issue> result = await _issueBll.GetListAsync(projectId, scheduleId, "CreateDate Desc", page, size);
+            PageData<Issue> result = await _issueBll.GetListAsync(projectId, scheduleId, principalId, "CreateDate Desc", page, size);
             return new JsonResult(new { success = true, data = result });
         }
 

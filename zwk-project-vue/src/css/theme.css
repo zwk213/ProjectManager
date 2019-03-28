@@ -1,93 +1,93 @@
-body{
+body {
     /*全局背景色*/
     background-color: #f2f2f2;
     /*使用正文颜色*/
-    color: rgba(0,0,0,0.85);
+    color: rgba(0, 0, 0, 0.85);
 }
 
 /*标题 加粗 黑色*/
-.text-important{
+.text-important {
     font-weight: bold;
-    color:rgba(0,0,0,0.85)
+    color: rgba(0, 0, 0, 0.85)
 }
 
 /*正文*/
-.text-normal{
-    color:rgba(0,0,0,0.85)
+.text-normal {
+    color: rgba(0, 0, 0, 0.85)
 }
 
 /*提示信息*/
-.text-light{
-    color: rgba(0,0,0,0.6);
+.text-light {
+    color: rgba(0, 0, 0, 0.6);
 }
 
-.text-info{
-    color:#577abc;
+.text-info {
+    color: #577abc;
 }
 
-.text-success{
-    color:#00c853;
+.text-success {
+    color: #00c853;
 }
 
-.text-warning{
-    color:#ffa726;
+.text-warning {
+    color: #ffa726;
 }
 
-.text-danger{
-    color:#ef5350;
+.text-danger {
+    color: #ef5350;
 }
 
 /*功能色*/
-.bg-white{
+.bg-white {
     background-color: #ffffff;
 }
 
-.bg-success{
+.bg-success {
     background-color: #00c853;
 }
 
-.bg-warning{
+.bg-warning {
     background-color: #ffa726;
 }
 
-.bg-danger{
+.bg-danger {
     background-color: #ef5350;
 }
 
-.bg-light{
-    background-color: rgba(0,0,0,0.1);
+.bg-light {
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
-.link{
-    color:#577abc;
+.link {
+    color: #577abc;
     font-weight: bold;
 }
 
 /*以下颜色仅为定义，实际效果在extend.css覆盖elementUI*/
 /*侧边栏*/
-.sidebar{
+.sidebar {
     background-color: #37404f;
 }
 
 /*标准按键颜色定义  */
-.btn-primary{
+.btn-primary {
     background-color: #577abc;
 }
 
-.btn-primary:hover{
+.btn-primary:hover {
     background-color: #7d9ac9;
 }
 
-.btn-primary:active{
+.btn-primary:active {
     background-color: #3e5a96;
 }
 
 /*表头背景色*/
-.table-head{
+.table-head {
     background-color: #edeef0;
 }
 
 /*组件描边*/
-.border-color{
+.border-color {
     border-color: #dddddd;
 }
